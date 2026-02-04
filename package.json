@@ -1,0 +1,8 @@
+{
+  "name": "sd-sb36-action",
+  "version": "1.0.0",
+  "description": "Contact your legislators about SD SB 36 - Utility Wildfire Liability",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0"
+  }
+}

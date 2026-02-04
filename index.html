@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Stop SB 36 - Protect Wildfire Victims' Rights in South Dakota</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAz7sOz7lAaC1ImZMCnPu9yoTvcbBvTt3A&libraries=places"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --red-dark: #8b1a1a;
+            --red-mid: #b22222;
+            --red-light: #cd5c5c;
+            --orange-accent: #e87a3d;
+            --cream: #faf8f5;
+            --cream-dark: #f0ebe3;
+            --gold: #c9a962;
+            --gold-light: #e5d4a1;
+            --text-dark: #1a1a1a;
+            --text-mid: #4a4a4a;
+            --blue-professional: #1e4a6d;
+            --blue-light: #3a7ca5;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            z-index: 1000;
+        }
+
+        .app-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--red-dark);
+        }
+
+        .header-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--red-dark);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: var(--text-mid);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bill-badge {
+            display: inline-block;
+            background: var(--red-dark);
+            color: white;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Steps indicator */
+        .steps {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: white;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-mid);
+            border: 2px solid var(--cream-dark);
+            transition: all 0.3s ease;
+        }
+
+        .step.active {
+            background: var(--red-dark);
+            color: white;
+            border-color: var(--red-dark);
+        }
+
+        .step.completed {
+            background: var(--blue-professional);
+            color: white;
+            border-color: var(--blue-professional);
+        }
+
+        .step-number {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--cream-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .step.active .step-number,
+        .step.completed .step-number {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Card styles */
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--red-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .card-header p {
+            color: var(--text-mid);
+            font-size: 0.95rem;
+        }
+
+        /* Alert box */
+        .alert-box {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+            border: 2px solid var(--red-light);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .alert-box h3 {
+            color: var(--red-dark);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .alert-box p {
+            font-size: 0.9rem;
+            color: var(--text-mid);
+            line-height: 1.5;
+        }
+
+        /* Form elements */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"] {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            font-size: 1.1rem;
+            font-family: 'JetBrains Mono', monospace;
+            border: 2px solid var(--cream-dark);
+            border-radius: 12px;
+            background: var(--cream);
+            transition: all 0.2s ease;
+            letter-spacing: 0.05em;
+        }
+
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="email"]:focus {
+            outline: none;
+            border-color: var(--blue-light);
+            background: white;
+        }
+
+        input[type="text"]::placeholder,
+        input[type="tel"]::placeholder,
+        input[type="email"]::placeholder {
+            color: #aaa;
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: 0;
+        }
+
+        .input-hint {
+            font-size: 0.85rem;
+            color: var(--text-mid);
+            margin-top: 0.5rem;
+        }
+
+        .error-message {
+            color: var(--red-mid);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--red-dark);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--red-mid);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--cream);
+            color: var(--red-dark);
+            border: 2px solid var(--red-dark);
+        }
+
+        .btn-secondary:hover {
+            background: var(--cream-dark);
+        }
+
+        .btn-contact {
+            background: var(--blue-professional);
+            color: white;
+            width: 100%;
+            padding: 1.25rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-contact:hover {
+            background: var(--blue-light);
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Tab buttons */
+        .tab-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--cream);
+            padding: 0.5rem;
+            border-radius: 12px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: transparent;
+            color: var(--text-mid);
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: var(--red-dark);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: rgba(255,255,255,0.5);
+        }
+
+        /* Legislator cards */
+        .legislators-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .legislator-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--cream);
+            border-radius: 12px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .legislator-card:hover {
+            border-color: var(--blue-light);
+        }
+
+        .legislator-card.selected {
+            background: var(--blue-professional);
+            color: white;
+        }
+
+        .legislator-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--blue-professional);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .legislator-card.selected .legislator-avatar {
+            background: var(--blue-light);
+            color: white;
+        }
+
+        .legislator-info {
+            flex: 1;
+        }
+
+        .legislator-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .legislator-role {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .legislator-party {
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: rgba(0,0,0,0.1);
+        }
+
+        .legislator-card.selected .legislator-party {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Committee badge */
+        .committee-badge {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: var(--orange-accent);
+            color: white;
+            margin-left: 0.5rem;
+        }
+
+        /* Template selector */
+        .template-grid {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .template-card {
+            padding: 1rem;
+            background: var(--cream);
+            border-radius: 12px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .template-card:hover {
+            border-color: var(--blue-light);
+        }
+
+        .template-card.selected {
+            border-color: var(--blue-professional);
+            background: rgba(30, 74, 109, 0.05);
+        }
+
+        .template-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .template-icon {
+            font-size: 1.5rem;
+        }
+
+        .template-name {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .template-desc {
+            font-size: 0.85rem;
+            color: var(--text-mid);
+            line-height: 1.4;
+        }
+
+        /* Message preview */
+        .message-preview {
+            background: var(--cream);
+            border-radius: 12px;
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        /* Summary section */
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .summary-label {
+            color: var(--text-mid);
+        }
+
+        .summary-value {
+            font-weight: 600;
+            text-align: right;
+        }
+
+        /* District info */
+        .district-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--blue-professional);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .nav-buttons .btn {
+            flex: 1;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* Select all button */
+        .select-all-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--cream);
+            border: 2px solid var(--blue-professional);
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--blue-professional);
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+
+        .select-all-btn:hover {
+            background: var(--blue-professional);
+            color: white;
+        }
+
+        /* Info box */
+        .info-box {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f0fa 100%);
+            border: 2px solid var(--blue-light);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .info-box .icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .app-container {
+                padding: 1rem 1rem 2rem;
+            }
+
+            .header {
+                margin-bottom: 1.5rem;
+                padding-bottom: 1rem;
+            }
+
+            .header-icon {
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+                margin-bottom: 0.25rem;
+            }
+
+            .header p {
+                font-size: 0.85rem;
+                line-height: 1.4;
+            }
+
+            .steps {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.25rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .step {
+                font-size: 0.6rem;
+                padding: 0.3rem 0.2rem;
+                justify-content: center;
+                flex-direction: column;
+                gap: 0.15rem;
+            }
+
+            .step-number {
+                width: 18px;
+                height: 18px;
+                font-size: 0.65rem;
+            }
+
+            .card {
+                padding: 1rem;
+                border-radius: 12px;
+            }
+
+            .card-header {
+                margin-bottom: 1rem;
+            }
+
+            .card-header h2 {
+                font-size: 1.1rem;
+            }
+
+            .card-header p {
+                font-size: 0.85rem;
+            }
+
+            .tab-buttons {
+                flex-direction: column;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+            }
+
+            .form-group label {
+                font-size: 0.85rem;
+                margin-bottom: 0.35rem;
+            }
+
+            input[type="text"],
+            input[type="tel"],
+            input[type="email"] {
+                padding: 0.75rem 1rem;
+                font-size: 0.95rem;
+            }
+
+            .input-hint {
+                font-size: 0.75rem;
+            }
+
+            .btn {
+                padding: 0.75rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .btn-contact {
+                padding: 0.85rem;
+                font-size: 0.95rem;
+            }
+
+            .nav-buttons {
+                margin-top: 1.25rem;
+                gap: 0.5rem;
+                flex-direction: column-reverse;
+            }
+
+            .legislator-card {
+                padding: 0.85rem;
+                gap: 0.75rem;
+            }
+
+            .legislator-avatar {
+                width: 44px;
+                height: 44px;
+                font-size: 1rem;
+            }
+
+            .legislator-name {
+                font-size: 0.95rem;
+            }
+
+            .legislator-role {
+                font-size: 0.8rem;
+            }
+
+            .legislator-party {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.5rem;
+            }
+
+            .district-badge {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.75rem;
+            }
+        }
+
+        /* Reset link */
+        .reset-link {
+            display: block;
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--text-mid);
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .reset-link:hover {
+            color: var(--red-dark);
+        }
+
+        /* Loading spinner */
+        .loading {
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--cream-dark);
+            border-top-color: var(--red-dark);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // South Dakota Legislators data (2026 session)
+        const legislators = {
+            1: { members: [
+                { name: "Michael Rohl", party: "R", email: "michael.rohl@sdlegislature.gov", chamber: "Senate" },
+                { name: "Nick Fosness", party: "R", email: "nick.fosness@sdlegislature.gov", chamber: "House" },
+                { name: "Logan Manhart", party: "R", email: "logan.manhart@sdlegislature.gov", chamber: "House" },
+            ]},
+            2: { members: [
+                { name: "John Sjaarda", party: "R", email: "john.sjaarda@sdlegislature.gov", chamber: "House" },
+                { name: "Steve Kolbeck", party: "R", email: "steve.kolbeck@sdlegislature.gov", chamber: "Senate" },
+                { name: "David Kull", party: "R", email: "david.kull@sdlegislature.gov", chamber: "House" },
+            ]},
+            3: { members: [
+                { name: "Al Novstrup", party: "R", email: "al.novstrup@sdlegislature.gov", chamber: "House" },
+                { name: "Carl Perry", party: "R", email: "carl.perry@sdlegislature.gov", chamber: "Senate" },
+                { name: "Brandei Schaefbauer", party: "R", email: "brandei.schaefbauer@sdlegislature.gov", chamber: "House" },
+            ]},
+            4: { members: [
+                { name: "Stephanie Sauder", party: "R", email: "stephanie.sauder@sdlegislature.gov", chamber: "Senate" },
+                { name: "Dylan Jordan", party: "R", email: "dylan.jordan@sdlegislature.gov", chamber: "House" },
+                { name: "Kent Roe", party: "R", email: "kent.roe@sdlegislature.gov", chamber: "House" },
+            ]},
+            5: { members: [
+                { name: "Glen Vilhauer", party: "R", email: "glen.vilhauer@sdlegislature.gov", chamber: "Senate" },
+                { name: "Josephine Garcia", party: "R", email: "josephine.garcia@sdlegislature.gov", chamber: "House" },
+                { name: "Matt Roby", party: "R", email: "matt.roby@sdlegislature.gov", chamber: "House" },
+            ]},
+            6: { members: [
+                { name: "Ernie Otten", party: "R", email: "ernie.otten@sdlegislature.gov", chamber: "Senate" },
+                { name: "Aaron Aylward", party: "R", email: "aaron.aylward@sdlegislature.gov", chamber: "House" },
+                { name: "Tim Czmowski", party: "R", email: "tim.czmowski@sdlegislature.gov", chamber: "House" },
+            ]},
+            7: { members: [
+                { name: "Tim Reed", party: "R", email: "tim.reed@sdlegislature.gov", chamber: "Senate" },
+                { name: "Roger DeGroot", party: "R", email: "roger.degroot@sdlegislature.gov", chamber: "House" },
+                { name: "Mellissa Heermann", party: "R", email: "mellissa.heermann@sdlegislature.gov", chamber: "House" },
+            ]},
+            8: { members: [
+                { name: "Casey Crabtree", party: "R", email: "casey.crabtree@sdlegislature.gov", chamber: "Senate" },
+                { name: "Tim Reisch", party: "R", email: "tim.reisch@sdlegislature.gov", chamber: "House" },
+                { name: "Tim Walburg", party: "R", email: "tim.walburg@sdlegislature.gov", chamber: "House" },
+            ]},
+            9: { members: [
+                { name: "Bethany Soye", party: "R", email: "bethany.soye@sdlegislature.gov", chamber: "House" },
+                { name: "Joy Hohn", party: "R", email: "joy.hohn@sdlegislature.gov", chamber: "Senate" },
+                { name: "Tesa Schwans", party: "R", email: "tesa.schwans@sdlegislature.gov", chamber: "House" },
+            ]},
+            10: { members: [
+                { name: "Liz Larson", party: "D", email: "liz.larson@sdlegislature.gov", chamber: "Senate" },
+                { name: "Bobbi Andera", party: "D", email: "bobbi.andera@sdlegislature.gov", chamber: "House" },
+                { name: "Erin Healy", party: "D", email: "erin.healy@sdlegislature.gov", chamber: "House" },
+            ]},
+            11: { members: [
+                { name: "Chris Karr", party: "R", email: "chris.karr@sdlegislature.gov", chamber: "Senate" },
+                { name: "Brian Mulder", party: "R", email: "brian.mulder@sdlegislature.gov", chamber: "House" },
+                { name: "Keri Weems", party: "R", email: "keri.weems@sdlegislature.gov", chamber: "House" },
+            ]},
+            12: { members: [
+                { name: "Arch Beal", party: "R", email: "arch.beal@sdlegislature.gov", chamber: "Senate" },
+                { name: "Amber Arlint", party: "R", email: "amber.arlint@sdlegislature.gov", chamber: "House" },
+                { name: "Greg Jamison", party: "R", email: "greg.jamison@sdlegislature.gov", chamber: "House" },
+            ]},
+            13: { members: [
+                { name: "Jack Kolbeck", party: "R", email: "jack.kolbeck@sdlegislature.gov", chamber: "House" },
+                { name: "John Hughes", party: "R", email: "john.hughes@sdlegislature.gov", chamber: "House" },
+                { name: "Sue Peterson", party: "R", email: "sue.peterson@sdlegislature.gov", chamber: "Senate" },
+            ]},
+            14: { members: [
+                { name: "Larry Zikmund", party: "R", email: "larry.zikmund@sdlegislature.gov", chamber: "Senate" },
+                { name: "Tony Kayser", party: "R", email: "tony.kayser@sdlegislature.gov", chamber: "House" },
+                { name: "Taylor Rehfeldt", party: "R", email: "taylor.rehfeldt@sdlegislature.gov", chamber: "House" },
+            ]},
+            15: { members: [
+                { name: "Kadyn Wittman", party: "D", email: "kadyn.wittman@sdlegislature.gov", chamber: "House" },
+                { name: "Erik Muckey", party: "D", email: "erik.muckey@sdlegislature.gov", chamber: "House" },
+                { name: "Jamie Smith", party: "D", email: "jamie.smith@sdlegislature.gov", chamber: "Senate" },
+            ]},
+            16: { members: [
+                { name: "Kevin Jensen", party: "R", email: "kevin.jensen@sdlegislature.gov", chamber: "Senate" },
+                { name: "Karla Lems", party: "R", email: "karla.lems@sdlegislature.gov", chamber: "House" },
+                { name: "John Shubeck", party: "R", email: "john.shubeck@sdlegislature.gov", chamber: "House" },
+            ]},
+            17: { members: [
+                { name: "Sydney Davis", party: "R", email: "sydney.davis@sdlegislature.gov", chamber: "Senate" },
+                { name: "Chris Kassin", party: "R", email: "chris.kassin@sdlegislature.gov", chamber: "House" },
+                { name: "William Shorma", party: "R", email: "william.shorma@sdlegislature.gov", chamber: "House" },
+            ]},
+            18: { members: [
+                { name: "Lauren Nelson", party: "R", email: "lauren.nelson@sdlegislature.gov", chamber: "Senate" },
+                { name: "Julie Auch", party: "R", email: "julie.auch@sdlegislature.gov", chamber: "House" },
+                { name: "Mike Stevens", party: "R", email: "mike.stevens@sdlegislature.gov", chamber: "House" },
+            ]},
+            19: { members: [
+                { name: "Kyle Schoenfish", party: "R", email: "kyle.schoenfish@sdlegislature.gov", chamber: "Senate" },
+                { name: "Jessica Bahmuller", party: "R", email: "jessica.bahmuller@sdlegislature.gov", chamber: "House" },
+                { name: "Drew Peterson", party: "R", email: "drew.peterson@sdlegislature.gov", chamber: "House" },
+            ]},
+            20: { members: [
+                { name: "Paul Miskimins", party: "R", email: "paul.miskimins@sdlegislature.gov", chamber: "Senate" },
+                { name: "Jeff Bathke", party: "R", email: "jeff.bathke@sdlegislature.gov", chamber: "House" },
+                { name: "Kaley Nolz", party: "R", email: "kaley.nolz@sdlegislature.gov", chamber: "House" },
+            ]},
+            21: { members: [
+                { name: "Marty Overweg", party: "R", email: "marty.overweg@sdlegislature.gov", chamber: "House" },
+                { name: "Jim Halverson", party: "R", email: "jim.halverson@sdlegislature.gov", chamber: "House" },
+                { name: "Mykala Voita", party: "R", email: "mykala.voita@sdlegislature.gov", chamber: "Senate" },
+            ]},
+            22: { members: [
+                { name: "Lana Greenfield", party: "R", email: "lana.greenfield@sdlegislature.gov", chamber: "House" },
+                { name: "Kevin Van Diepen", party: "R", email: "kevin.vandiepen@sdlegislature.gov", chamber: "House" },
+                { name: "Brandon Wipf", party: "R", email: "brandon.wipf@sdlegislature.gov", chamber: "Senate" },
+            ]},
+            23: { members: [
+                { name: "Mark Lapka", party: "R", email: "mark.lapka@sdlegislature.gov", chamber: "Senate" },
+                { name: "Spencer Gosch", party: "R", email: "spencer.gosch@sdlegislature.gov", chamber: "House" },
+                { name: "Scott Moore", party: "R", email: "scott.moore@sdlegislature.gov", chamber: "House" },
+            ]},
+            24: { members: [
+                { name: "Jim Mehlhaff", party: "R", email: "jim.mehlhaff@sdlegislature.gov", chamber: "Senate" },
+                { name: "Will Mortenson", party: "R", email: "will.mortenson@sdlegislature.gov", chamber: "House" },
+                { name: "Mike Weisgram", party: "R", email: "mike.weisgram@sdlegislature.gov", chamber: "House" },
+            ]},
+            25: { members: [
+                { name: "Tom Pischke", party: "R", email: "tom.pischke@sdlegislature.gov", chamber: "Senate" },
+                { name: "Jon Hansen", party: "R", email: "jon.hansen@sdlegislature.gov", chamber: "House" },
+                { name: "Leslie Heinemann", party: "R", email: "leslie.heinemann@sdlegislature.gov", chamber: "House" },
+            ]},
+            26: { members: [
+                { name: "Tamara Grove", party: "R", email: "tamara.grove@sdlegislature.gov", chamber: "Senate" },
+                { name: "Eric Emery", party: "D", email: "eric.emery@sdlegislature.gov", chamber: "House" },
+                { name: "Rebecca Reimer", party: "R", email: "rebecca.reimer@sdlegislature.gov", chamber: "House" },
+            ]},
+            27: { members: [
+                { name: "Red Dawn Foster", party: "D", email: "reddawn.foster@sdlegislature.gov", chamber: "Senate" },
+                { name: "Liz May", party: "R", email: "liz.may@sdlegislature.gov", chamber: "House" },
+                { name: "Peri Pourier", party: "D", email: "peri.pourier@sdlegislature.gov", chamber: "House" },
+            ]},
+            28: { members: [
+                { name: "Sam Marty", party: "R", email: "sam.marty@sdlegislature.gov", chamber: "Senate" },
+                { name: "Jana Hunt", party: "R", email: "jana.hunt@sdlegislature.gov", chamber: "House" },
+                { name: "Travis Ismay", party: "R", email: "travis.ismay@sdlegislature.gov", chamber: "House" },
+            ]},
+            29: { members: [
+                { name: "John Carley", party: "R", email: "john.carley@sdlegislature.gov", chamber: "Senate" },
+                { name: "Terri Jorgenson", party: "R", email: "terri.jorgenson@sdlegislature.gov", chamber: "House" },
+                { name: "Kathy Rice", party: "R", email: "kathy.rice@sdlegislature.gov", chamber: "House" },
+            ]},
+            30: { members: [
+                { name: "Amber Hulse", party: "R", email: "amber.hulse@sdlegislature.gov", chamber: "Senate" },
+                { name: "Tim Goodwin", party: "R", email: "tim.goodwin@sdlegislature.gov", chamber: "House" },
+                { name: "Trish Ladner", party: "R", email: "trish.ladner@sdlegislature.gov", chamber: "House" },
+            ]},
+            31: { members: [
+                { name: "Randy Deibert", party: "R", email: "randy.deibert@sdlegislature.gov", chamber: "Senate" },
+                { name: "Mary Fitzgerald", party: "R", email: "mary.fitzgerald@sdlegislature.gov", chamber: "House" },
+                { name: "Scott Odenbach", party: "R", email: "scott.odenbach@sdlegislature.gov", chamber: "House" },
+            ]},
+            32: { members: [
+                { name: "Helene Duhamel", party: "R", email: "helene.duhamel@sdlegislature.gov", chamber: "Senate" },
+                { name: "Steve Duffy", party: "R", email: "steve.duffy@sdlegislature.gov", chamber: "House" },
+                { name: "Nicole Uhre-Balk", party: "D", email: "nicole.uhre-balk@sdlegislature.gov", chamber: "House" },
+            ]},
+            33: { members: [
+                { name: "Curt Voight", party: "R", email: "curt.voight@sdlegislature.gov", chamber: "Senate" },
+                { name: "Phil Jensen", party: "R", email: "phil.jensen@sdlegislature.gov", chamber: "House" },
+                { name: "Curt Massie", party: "R", email: "curt.massie@sdlegislature.gov", chamber: "House" },
+            ]},
+            34: { members: [
+                { name: "Taffy Howard", party: "R", email: "taffy.howard@sdlegislature.gov", chamber: "Senate" },
+                { name: "Heather Baxter", party: "R", email: "heather.baxter@sdlegislature.gov", chamber: "House" },
+                { name: "Mike Derby", party: "R", email: "mike.derby@sdlegislature.gov", chamber: "House" },
+            ]},
+            35: { members: [
+                { name: "Tina Mulally", party: "R", email: "tina.mulally@sdlegislature.gov", chamber: "House" },
+                { name: "Greg Blanc", party: "R", email: "greg.blanc@sdlegislature.gov", chamber: "Senate" },
+                { name: "Tony Randolph", party: "R", email: "tony.randolph@sdlegislature.gov", chamber: "House" },
+            ]},
+        };
+
+        // House Commerce & Energy Committee members (2025-2026)
+        const committeeMembers = [
+            { name: "Karla Lems", party: "R", email: "karla.lems@sdlegislature.gov", chamber: "House", role: "Chair" },
+            { name: "Jessica Bahmuller", party: "R", email: "jessica.bahmuller@sdlegislature.gov", chamber: "House", role: "Vice Chair" },
+            { name: "Aaron Aylward", party: "R", email: "aaron.aylward@sdlegislature.gov", chamber: "House", role: "Member" },
+            { name: "Steve Duffy", party: "R", email: "steve.duffy@sdlegislature.gov", chamber: "House", role: "Member" },
+            { name: "Lana Greenfield", party: "R", email: "lana.greenfield@sdlegislature.gov", chamber: "House", role: "Member" },
+            { name: "Tony Kayser", party: "R", email: "tony.kayser@sdlegislature.gov", chamber: "House", role: "Member" },
+            { name: "Tina Mulally", party: "R", email: "tina.mulally@sdlegislature.gov", chamber: "House", role: "Member" },
+            { name: "Kaley Nolz", party: "R", email: "kaley.nolz@sdlegislature.gov", chamber: "House", role: "Member" },
+            { name: "Drew Peterson", party: "R", email: "drew.peterson@sdlegislature.gov", chamber: "House", role: "Member" },
+            { name: "Tesa Schwans", party: "R", email: "tesa.schwans@sdlegislature.gov", chamber: "House", role: "Member" },
+            { name: "William Shorma", party: "R", email: "william.shorma@sdlegislature.gov", chamber: "House", role: "Member" },
+            { name: "Mike Weisgram", party: "R", email: "mike.weisgram@sdlegislature.gov", chamber: "House", role: "Member" },
+            { name: "Nicole Uhre-Balk", party: "D", email: "nicole.uhre-balk@sdlegislature.gov", chamber: "House", role: "Member" },
+        ];
+
+        // Message templates
+        const templates = [
+            {
+                id: "subrogation",
+                name: "Subrogation Rights",
+                icon: "⚖️",
+                description: "Focus on how SB 36 guts insurance carriers' ability to recover costs from utilities that cause fires.",
+                getMessage: (legislator, userName, userCity, userPhone, userAgency) => {
+                    const title = legislator.chamber === "Senate" ? "Senator" : "Representative";
+                    return `Dear ${title} ${legislator.name.split(' ').pop()},
+
+My name is ${userName || '[Your Name]'}${userAgency ? `, and I am an insurance professional with ${userAgency}` : ''} in ${userCity || '[Your City]'}, South Dakota. I am writing to urge you to vote NO on SB 36.
+
+As someone who works in the insurance industry, I see firsthand how this bill would harm South Dakota policyholders. SB 36 effectively eliminates carriers' subrogation rights when utilities cause wildfires.
+
+Here's what that means in practice: When a utility-caused fire destroys a policyholder's property, the insurance company pays the claim. Under current law, we can then pursue the responsible utility to recover those costs. This keeps premiums affordable and holds negligent parties accountable.
+
+SB 36 creates a near-impossible burden of proof that would make recovery virtually impossible. Those costs don't disappear - they get passed directly to policyholders through higher premiums or reduced coverage in fire-prone areas.
+
+This bill protects utility shareholders at the expense of South Dakota families and businesses. Please vote NO on SB 36.
+
+Sincerely,
+${userName || '[Your Name]'}${userAgency ? '\n' + userAgency : ''}
+${userCity ? userCity + ', SD' : '[Your City, SD]'}${userPhone ? '\n' + userPhone : ''}`;
+                }
+            },
+            {
+                id: "premiums",
+                name: "Premium Impact",
+                icon: "💰",
+                description: "Emphasize how shifting liability away from utilities will raise insurance costs for South Dakotans.",
+                getMessage: (legislator, userName, userCity, userPhone, userAgency) => {
+                    const title = legislator.chamber === "Senate" ? "Senator" : "Representative";
+                    return `Dear ${title} ${legislator.name.split(' ').pop()},
+
+I am ${userName || '[Your Name]'}${userAgency ? ` with ${userAgency}` : ''}, writing from ${userCity || '[Your City]'} to oppose SB 36.
+
+This bill will directly increase insurance costs for South Dakota homeowners and businesses. Here's why:
+
+When utilities cause wildfires and insurance pays claims, carriers currently recover those costs from the responsible party. SB 36 makes that recovery nearly impossible by capping damages and creating an unreasonable burden of proof.
+
+Where do those unrecovered costs go? They don't vanish - they spread across all policyholders through higher premiums. In fire-prone areas, coverage may become unaffordable or unavailable entirely.
+
+We've seen this play out in western states where similar utility-friendly legislation passed. California's insurance crisis is a cautionary tale. South Dakota shouldn't follow that path.
+
+Please protect South Dakota consumers and vote NO on SB 36.
+
+Respectfully,
+${userName || '[Your Name]'}${userAgency ? '\n' + userAgency : ''}
+${userCity ? userCity + ', SD' : '[Your City, SD]'}${userPhone ? '\n' + userPhone : ''}`;
+                }
+            },
+            {
+                id: "accountability",
+                name: "Utility Accountability",
+                icon: "🔌",
+                description: "Focus on how this bill removes incentives for utilities to maintain safe infrastructure.",
+                getMessage: (legislator, userName, userCity, userPhone, userAgency) => {
+                    const title = legislator.chamber === "Senate" ? "Senator" : "Representative";
+                    return `Dear ${title} ${legislator.name.split(' ').pop()},
+
+My name is ${userName || '[Your Name]'}${userAgency ? ` from ${userAgency}` : ''} in ${userCity || '[Your City]'}. I strongly urge you to oppose SB 36.
+
+This bill removes a critical incentive for utilities to maintain safe infrastructure. Under current law, if a utility's negligence causes a wildfire, they face strict liability. This motivates investment in proper maintenance, vegetation management, and equipment upgrades.
+
+SB 36 lets utilities file a "mitigation plan" and in exchange eliminates strict liability. The message to utilities is clear: file some paperwork, and you're shielded from accountability when your equipment starts fires.
+
+Who pays when accountability disappears? Insurance carriers absorb the immediate costs, but ultimately South Dakota policyholders bear the burden through higher premiums.
+
+Utilities are monopolies - ratepayers can't switch providers. The least we can do is hold them accountable when their negligence destroys property. Please vote NO on SB 36.
+
+Thank you,
+${userName || '[Your Name]'}${userAgency ? '\n' + userAgency : ''}
+${userCity ? userCity + ', SD' : '[Your City, SD]'}${userPhone ? '\n' + userPhone : ''}`;
+                }
+            },
+            {
+                id: "victims",
+                name: "Victim Rights",
+                icon: "🏠",
+                description: "Highlight how SB 36 makes it nearly impossible for wildfire victims to recover damages.",
+                getMessage: (legislator, userName, userCity, userPhone, userAgency) => {
+                    const title = legislator.chamber === "Senate" ? "Senator" : "Representative";
+                    return `Dear ${title} ${legislator.name.split(' ').pop()},
+
+I am ${userName || '[Your Name]'}${userAgency ? `, an insurance professional with ${userAgency}` : ''}, writing to oppose SB 36.
+
+This bill is devastating for wildfire victims. It creates a near-impossible burden of proof for anyone trying to recover damages from a utility that caused a fire. Even when a utility's faulty equipment clearly started the blaze, victims would face capped damages and procedural hurdles designed to protect the utility.
+
+Insurance helps, but policies have limits. When a family loses everything in a utility-caused fire, they deserve their day in court - not a system rigged against them.
+
+SB 36 is part of a coordinated utility industry push that's rolled through western states. It benefits utility shareholders at the expense of the families and businesses they're supposed to serve.
+
+South Dakota should protect its citizens, not shield negligent utilities. Please vote NO on SB 36.
+
+Sincerely,
+${userName || '[Your Name]'}${userAgency ? '\n' + userAgency : ''}
+${userCity ? userCity + ', SD' : '[Your City, SD]'}${userPhone ? '\n' + userPhone : ''}`;
+                }
+            },
+            {
+                id: "industry",
+                name: "Insurance Industry Impact",
+                icon: "📋",
+                description: "Explain the broader insurance market implications of this legislation.",
+                getMessage: (legislator, userName, userCity, userPhone, userAgency) => {
+                    const title = legislator.chamber === "Senate" ? "Senator" : "Representative";
+                    return `Dear ${title} ${legislator.name.split(' ').pop()},
+
+My name is ${userName || '[Your Name]'}${userAgency ? ` with ${userAgency}` : ''} in ${userCity || '[Your City]'}, and I'm writing as an insurance industry professional to oppose SB 36.
+
+This bill would destabilize South Dakota's property insurance market. By eliminating strict liability and capping damages for utility-caused wildfires, SB 36 shifts massive potential losses onto insurers with no path to recovery from responsible parties.
+
+The insurance industry response to this kind of legislation is predictable: rate increases, coverage restrictions, and in severe cases, market withdrawal from high-risk areas. We've watched this unfold in other states.
+
+South Dakota's insurance market is currently stable and competitive. SB 36 threatens that stability by forcing insurers to absorb losses that should rightfully be borne by negligent utilities.
+
+As an insurance professional who serves South Dakota families, I urge you to protect our market and our policyholders. Please vote NO on SB 36.
+
+Respectfully,
+${userName || '[Your Name]'}${userAgency ? '\n' + userAgency : ''}
+${userCity ? userCity + ', SD' : '[Your City, SD]'}${userPhone ? '\n' + userPhone : ''}`;
+                }
+            }
+        ];
+
+        function App() {
+            const [step, setStep] = useState(1);
+            const [contactMode, setContactMode] = useState('district'); // 'district' or 'committee'
+            const [address, setAddress] = useState('');
+            const [district, setDistrict] = useState(null);
+            const [loading, setLoading] = useState(false);
+            const [selectedLegislators, setSelectedLegislators] = useState([]);
+            const [selectedTemplate, setSelectedTemplate] = useState(null);
+            const [userFirstName, setUserFirstName] = useState('');
+            const [userLastName, setUserLastName] = useState('');
+            const [userCity, setUserCity] = useState('');
+            const [userPhone, setUserPhone] = useState('');
+            const [userAgency, setUserAgency] = useState('');
+            const [error, setError] = useState('');
+            const [emailsSent, setEmailsSent] = useState(0);
+            const [matchedAddress, setMatchedAddress] = useState('');
+            const [sendingAll, setSendingAll] = useState(false);
+
+            const userName = [userFirstName, userLastName].filter(Boolean).join(' ') || '';
+
+            const inputRef = useRef(null);
+            const autocompleteRef = useRef(null);
+
+            // Initialize Google Places Autocomplete
+            useEffect(() => {
+                if (!inputRef.current || !window.google || autocompleteRef.current) return;
+
+                const sdBounds = new window.google.maps.LatLngBounds(
+                    new window.google.maps.LatLng(42.4, -104.5),
+                    new window.google.maps.LatLng(46.0, -96.4)
+                );
+
+                autocompleteRef.current = new window.google.maps.places.Autocomplete(inputRef.current, {
+                    types: ['address'],
+                    componentRestrictions: { country: 'us' },
+                    bounds: sdBounds,
+                    strictBounds: true,
+                    fields: ['formatted_address', 'geometry', 'address_components']
+                });
+
+                autocompleteRef.current.addListener('place_changed', async () => {
+                    const place = autocompleteRef.current.getPlace();
+
+                    if (!place.geometry) {
+                        setError('Please select an address from the dropdown');
+                        return;
+                    }
+
+                    const stateComponent = place.address_components?.find(
+                        c => c.types.includes('administrative_area_level_1')
+                    );
+
+                    if (stateComponent?.short_name !== 'SD') {
+                        setError('Please enter a South Dakota address');
+                        return;
+                    }
+
+                    const cityComponent = place.address_components?.find(
+                        c => c.types.includes('locality')
+                    );
+                    if (cityComponent) {
+                        setUserCity(cityComponent.long_name);
+                    }
+
+                    setAddress(place.formatted_address);
+                    setMatchedAddress(place.formatted_address);
+
+                    const lat = place.geometry.location.lat();
+                    const lng = place.geometry.location.lng();
+                    await lookupDistrictByCoords(lat, lng);
+                });
+            }, [step, contactMode]);
+
+            const lookupDistrictByCoords = async (lat, lng) => {
+                setLoading(true);
+                setError('');
+
+                try {
+                    const url = `https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Legislative/MapServer/identify?` +
+                        `geometry=${lng},${lat}&geometryType=esriGeometryPoint&sr=4326&` +
+                        `layers=all:1&tolerance=0&mapExtent=-104,43,-96,46&imageDisplay=800,600,96&` +
+                        `returnGeometry=false&f=json`;
+
+                    const response = await fetch(url);
+                    const data = await response.json();
+
+                    if (data.results && data.results.length > 0) {
+                        const districtName = data.results[0].attributes.BASENAME || data.results[0].attributes.NAME;
+                        const districtNum = parseInt(districtName, 10);
+
+                        if (legislators[districtNum]) {
+                            setDistrict(districtNum);
+                            goToStep(2);
+                        } else {
+                            setError(`District ${districtNum} not found. Please try a different address.`);
+                        }
+                    } else {
+                        setError('Could not determine your legislative district. Please try again.');
+                    }
+                } catch (err) {
+                    console.error('District lookup error:', err);
+                    setError('Error looking up district. Please try again.');
+                }
+                setLoading(false);
+            };
+
+            const toggleLegislator = (legislator) => {
+                const id = legislator.email;
+                const exists = selectedLegislators.find(l => l.email === id);
+
+                if (exists) {
+                    setSelectedLegislators(selectedLegislators.filter(l => l.email !== id));
+                } else {
+                    setSelectedLegislators([...selectedLegislators, legislator]);
+                }
+            };
+
+            const isLegislatorSelected = (legislator) => {
+                return selectedLegislators.some(l => l.email === legislator.email);
+            };
+
+            const selectAllCommittee = () => {
+                const allSelected = committeeMembers.every(m => isLegislatorSelected(m));
+                if (allSelected) {
+                    setSelectedLegislators([]);
+                } else {
+                    setSelectedLegislators([...committeeMembers]);
+                }
+            };
+
+            const openMailto = (legislator) => {
+                const message = selectedTemplate.getMessage(legislator, userName, userCity, userPhone, userAgency);
+                const subject = `Opposition to SB 36 - Utility Wildfire Liability`;
+                const body = encodeURIComponent(message);
+                window.open(`mailto:${legislator.email}?subject=${encodeURIComponent(subject)}&body=${body}`, '_blank');
+                setEmailsSent(prev => prev + 1);
+
+                trackEngagement('email', legislator);
+            };
+
+            const sendAllEmails = async () => {
+                setSendingAll(true);
+
+                selectedLegislators.forEach((legislator, index) => {
+                    setTimeout(() => {
+                        openMailto(legislator);
+                    }, index * 800);
+                });
+
+                setTimeout(() => {
+                    setSendingAll(false);
+                }, selectedLegislators.length * 800 + 500);
+            };
+
+            const reset = () => {
+                goToStep(1);
+                setContactMode('district');
+                setAddress('');
+                setDistrict(null);
+                setMatchedAddress('');
+                setSelectedLegislators([]);
+                setSelectedTemplate(null);
+                setUserFirstName('');
+                setUserLastName('');
+                setUserCity('');
+                setUserPhone('');
+                setUserAgency('');
+                setError('');
+                setEmailsSent(0);
+            };
+
+            const trackEngagement = async (actionType, legislator) => {
+                try {
+                    await fetch('/api/track', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            district: district || 0,
+                            bill_number: 'SB 36',
+                            stance: 'oppose',
+                            template_name: selectedTemplate?.name || 'unknown',
+                            action_type: actionType,
+                            legislator_name: legislator?.name || null,
+                            legislator_chamber: legislator?.chamber || null,
+                            contact_mode: contactMode,
+                            agency: userAgency || null
+                        })
+                    });
+                } catch (err) {
+                    console.log('Tracking failed:', err);
+                }
+            };
+
+            const goToStep = (stepNumber) => {
+                if (stepNumber === 1) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    setTimeout(() => {
+                        const stepsElement = document.querySelector('.steps');
+                        if (stepsElement) {
+                            const yOffset = -20;
+                            const y = stepsElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                            window.scrollTo({ top: y, behavior: 'smooth' });
+                        }
+                    }, 10);
+                }
+                setStep(stepNumber);
+            };
+
+            const districtData = district ? legislators[district] : null;
+
+            return (
+                <div className="app-container">
+                    <header className="header">
+                        <div className="header-icon">🔥</div>
+                        <span className="bill-badge">OPPOSE SB 36</span>
+                        <h1>Stop SB 36</h1>
+                        <p>Protect wildfire victims' rights and keep insurance affordable in South Dakota. Contact your legislators today.</p>
+                    </header>
+
+                    <div className="alert-box">
+                        <h3>⚠️ Why This Matters</h3>
+                        <p><strong>SB 36</strong> lets utilities file wildfire mitigation plans and in exchange eliminates strict liability, caps damages, and makes it nearly impossible for victims to recover. When insurers can't recover from negligent utilities, those costs fall on <strong>policyholders through higher premiums</strong>.</p>
+                    </div>
+
+                    <div className="steps">
+                        <div
+                            className={`step ${step >= 1 ? 'active' : ''} ${step > 1 ? 'completed' : ''}`}
+                            onClick={() => goToStep(1)}
+                            style={{ cursor: 'pointer' }}
+                        >
+                            <span className="step-number">1</span>
+                            Select
+                        </div>
+                        <div
+                            className={`step ${step >= 2 ? 'active' : ''} ${step > 2 ? 'completed' : ''}`}
+                            onClick={() => selectedLegislators.length > 0 && goToStep(2)}
+                            style={{ cursor: selectedLegislators.length > 0 ? 'pointer' : 'not-allowed', opacity: selectedLegislators.length > 0 ? 1 : 0.6 }}
+                        >
+                            <span className="step-number">2</span>
+                            Message
+                        </div>
+                        <div
+                            className={`step ${step >= 3 ? 'active' : ''}`}
+                            onClick={() => selectedTemplate && goToStep(3)}
+                            style={{ cursor: selectedTemplate ? 'pointer' : 'not-allowed', opacity: selectedTemplate ? 1 : 0.6 }}
+                        >
+                            <span className="step-number">3</span>
+                            Send
+                        </div>
+                    </div>
+
+                    {/* Step 1: Select Legislators */}
+                    {step === 1 && (
+                        <div className="card">
+                            <div className="card-header">
+                                <h2>Who Do You Want to Contact?</h2>
+                                <p>Choose to contact your district legislators or the House Commerce & Energy Committee hearing SB 36.</p>
+                            </div>
+
+                            <div className="tab-buttons">
+                                <button
+                                    className={`tab-btn ${contactMode === 'district' ? 'active' : ''}`}
+                                    onClick={() => { setContactMode('district'); setSelectedLegislators([]); }}
+                                >
+                                    📍 My District Legislators
+                                </button>
+                                <button
+                                    className={`tab-btn ${contactMode === 'committee' ? 'active' : ''}`}
+                                    onClick={() => { setContactMode('committee'); setSelectedLegislators([]); setDistrict(null); }}
+                                >
+                                    🏛️ Commerce & Energy Committee
+                                </button>
+                            </div>
+
+                            {contactMode === 'district' && !district && (
+                                <>
+                                    <div className="form-group">
+                                        <label>Your South Dakota Address</label>
+                                        <input
+                                            ref={inputRef}
+                                            type="text"
+                                            placeholder="Start typing your address..."
+                                            disabled={loading}
+                                        />
+                                        {error && <div className="error-message">{error}</div>}
+                                        {loading && (
+                                            <div className="input-hint" style={{ color: 'var(--blue-professional)' }}>
+                                                🔍 Looking up your district...
+                                            </div>
+                                        )}
+                                        <div className="input-hint">
+                                            Select your address from the dropdown
+                                        </div>
+                                    </div>
+
+                                    <div className="form-group" style={{ marginTop: '1rem', marginBottom: 0 }}>
+                                        <label>Or select your district directly</label>
+                                        <select
+                                            onChange={(e) => {
+                                                const distNum = parseInt(e.target.value);
+                                                if (distNum && legislators[distNum]) {
+                                                    setDistrict(distNum);
+                                                    setMatchedAddress(`District ${distNum}`);
+                                                }
+                                            }}
+                                            style={{
+                                                width: '100%',
+                                                padding: '1rem 1.25rem',
+                                                fontSize: '1.1rem',
+                                                fontFamily: "'Outfit', sans-serif",
+                                                border: '2px solid var(--cream-dark)',
+                                                borderRadius: '12px',
+                                                background: 'var(--cream)',
+                                                cursor: 'pointer',
+                                                color: 'var(--text-dark)'
+                                            }}
+                                            defaultValue=""
+                                        >
+                                            <option value="" disabled>Choose district...</option>
+                                            {Array.from({length: 35}, (_, i) => i + 1).map(num => (
+                                                <option key={num} value={num}>
+                                                    District {num} - {legislators[num]?.members.map(m => m.name.split(' ').pop()).join(', ')}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                </>
+                            )}
+
+                            {contactMode === 'district' && district && districtData && (
+                                <>
+                                    <div className="district-badge">
+                                        📍 District {district}
+                                    </div>
+                                    {matchedAddress && (
+                                        <div className="input-hint" style={{ marginBottom: '1rem' }}>
+                                            {matchedAddress}
+                                        </div>
+                                    )}
+
+                                    <div className="info-box">
+                                        <span className="icon">💡</span>
+                                        <span>Contacting all three legislators maximizes your impact!</span>
+                                    </div>
+
+                                    <div className="legislators-grid">
+                                        {districtData.members.map((member, i) => (
+                                            <div
+                                                key={i}
+                                                className={`legislator-card ${isLegislatorSelected(member) ? 'selected' : ''}`}
+                                                onClick={() => toggleLegislator(member)}
+                                            >
+                                                <div className="legislator-avatar">
+                                                    {member.name.split(' ').map(n => n[0]).join('')}
+                                                </div>
+                                                <div className="legislator-info">
+                                                    <div className="legislator-name">{member.name}</div>
+                                                    <div className="legislator-role">State {member.chamber === "Senate" ? "Senator" : "Representative"}</div>
+                                                </div>
+                                                <span className="legislator-party">{member.party}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div style={{ marginTop: '1rem' }}>
+                                        <span
+                                            className="reset-link"
+                                            onClick={() => { setDistrict(null); setSelectedLegislators([]); setMatchedAddress(''); }}
+                                            style={{ marginTop: 0 }}
+                                        >
+                                            Change district
+                                        </span>
+                                    </div>
+                                </>
+                            )}
+
+                            {contactMode === 'committee' && (
+                                <>
+                                    <div className="info-box">
+                                        <span className="icon">🏛️</span>
+                                        <span>The House Commerce & Energy Committee will hear SB 36. These are the members who will vote on whether to advance the bill.</span>
+                                    </div>
+
+                                    <button className="select-all-btn" onClick={selectAllCommittee}>
+                                        {committeeMembers.every(m => isLegislatorSelected(m)) ? '✓ All Selected' : 'Select All 13 Members'}
+                                    </button>
+
+                                    <div className="legislators-grid">
+                                        {committeeMembers.map((member, i) => (
+                                            <div
+                                                key={i}
+                                                className={`legislator-card ${isLegislatorSelected(member) ? 'selected' : ''}`}
+                                                onClick={() => toggleLegislator(member)}
+                                            >
+                                                <div className="legislator-avatar">
+                                                    {member.name.split(' ').map(n => n[0]).join('')}
+                                                </div>
+                                                <div className="legislator-info">
+                                                    <div className="legislator-name">
+                                                        {member.name}
+                                                        {member.role !== 'Member' && (
+                                                            <span className="committee-badge">{member.role}</span>
+                                                        )}
+                                                    </div>
+                                                    <div className="legislator-role">House Commerce & Energy</div>
+                                                </div>
+                                                <span className="legislator-party">{member.party}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </>
+                            )}
+
+                            {(contactMode === 'committee' || (contactMode === 'district' && district)) && (
+                                <div className="nav-buttons">
+                                    <button
+                                        className="btn btn-primary"
+                                        onClick={() => goToStep(2)}
+                                        disabled={selectedLegislators.length === 0}
+                                    >
+                                        Continue with {selectedLegislators.length} Legislator{selectedLegislators.length !== 1 ? 's' : ''} →
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    )}
+
+                    {/* Step 2: Choose Message Template */}
+                    {step === 2 && (
+                        <div className="card">
+                            <div className="card-header">
+                                <h2>Choose Your Message Focus</h2>
+                                <p>Select the angle that resonates most with you. All templates oppose SB 36.</p>
+                            </div>
+
+                            <div className="template-grid">
+                                {templates.map(template => (
+                                    <div
+                                        key={template.id}
+                                        className={`template-card ${selectedTemplate?.id === template.id ? 'selected' : ''}`}
+                                        onClick={() => setSelectedTemplate(template)}
+                                    >
+                                        <div className="template-header">
+                                            <span className="template-icon">{template.icon}</span>
+                                            <span className="template-name">{template.name}</span>
+                                        </div>
+                                        <div className="template-desc">{template.description}</div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="nav-buttons">
+                                <button className="btn btn-secondary" onClick={() => goToStep(1)}>
+                                    ← Back
+                                </button>
+                                <button
+                                    className="btn btn-primary"
+                                    onClick={() => goToStep(3)}
+                                    disabled={!selectedTemplate}
+                                >
+                                    Continue →
+                                </button>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Step 3: User Info & Send */}
+                    {step === 3 && (
+                        <div className="card">
+                            <div className="card-header">
+                                <h2>Send Your Message{selectedLegislators.length > 1 ? 's' : ''}</h2>
+                                <p>Add your information and send {selectedLegislators.length} email{selectedLegislators.length > 1 ? 's' : ''}.</p>
+                            </div>
+
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                                <div className="form-group" style={{ marginBottom: 0 }}>
+                                    <label>First Name *</label>
+                                    <input
+                                        type="text"
+                                        value={userFirstName}
+                                        onChange={(e) => setUserFirstName(e.target.value)}
+                                        placeholder="First"
+                                    />
+                                </div>
+                                <div className="form-group" style={{ marginBottom: 0 }}>
+                                    <label>Last Name *</label>
+                                    <input
+                                        type="text"
+                                        value={userLastName}
+                                        onChange={(e) => setUserLastName(e.target.value)}
+                                        placeholder="Last"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="form-group" style={{ marginTop: '1.5rem' }}>
+                                <label>Your City *</label>
+                                <input
+                                    type="text"
+                                    value={userCity}
+                                    onChange={(e) => setUserCity(e.target.value)}
+                                    placeholder="Enter your city"
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Agency / Company</label>
+                                <input
+                                    type="text"
+                                    value={userAgency}
+                                    onChange={(e) => setUserAgency(e.target.value)}
+                                    placeholder="Your insurance agency (optional)"
+                                />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Phone Number</label>
+                                <input
+                                    type="tel"
+                                    value={userPhone}
+                                    onChange={(e) => setUserPhone(e.target.value)}
+                                    placeholder="(605) 555-1234 (optional)"
+                                />
+                            </div>
+
+                            {/* Summary */}
+                            <div style={{ marginTop: '1.5rem', marginBottom: '1rem' }}>
+                                <h3 style={{ fontSize: '1rem', marginBottom: '0.75rem', color: 'var(--red-dark)' }}>📨 Sending to</h3>
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                                    {selectedLegislators.map(leg => (
+                                        <span key={leg.email} style={{
+                                            padding: '0.35rem 0.65rem',
+                                            background: 'var(--blue-professional)',
+                                            color: 'white',
+                                            borderRadius: '16px',
+                                            fontSize: '0.8rem'
+                                        }}>
+                                            {leg.chamber === 'Senate' ? 'Sen.' : 'Rep.'} {leg.name}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Message preview */}
+                            <details style={{ marginBottom: '1.5rem' }}>
+                                <summary style={{
+                                    cursor: 'pointer',
+                                    fontSize: '0.9rem',
+                                    fontWeight: '500',
+                                    color: 'var(--blue-professional)',
+                                    marginBottom: '0.5rem'
+                                }}>
+                                    👁 Preview message
+                                </summary>
+                                <div className="message-preview" style={{ marginTop: '0.5rem' }}>
+                                    {selectedTemplate?.getMessage(
+                                        selectedLegislators[0] || { name: 'Legislator', chamber: 'House' },
+                                        userName || '[Your Name]',
+                                        userCity || '[Your City]',
+                                        userPhone,
+                                        userAgency
+                                    )}
+                                </div>
+                            </details>
+
+                            <button
+                                className="btn btn-contact"
+                                onClick={sendAllEmails}
+                                disabled={sendingAll || !userName || !userCity}
+                            >
+                                {sendingAll ? '📧 Opening emails...' : `📧 Send ${selectedLegislators.length} Email${selectedLegislators.length > 1 ? 's' : ''}`}
+                            </button>
+
+                            <div className="input-hint" style={{ textAlign: 'center', marginTop: '1rem' }}>
+                                {selectedLegislators.length > 1
+                                    ? `This will open ${selectedLegislators.length} email windows — one for each legislator.`
+                                    : 'This will open your email client with the message ready to send.'
+                                }
+                            </div>
+
+                            <div className="nav-buttons">
+                                <button className="btn btn-secondary" onClick={() => goToStep(2)}>
+                                    ← Back
+                                </button>
+                            </div>
+
+                            <div className="reset-link" onClick={reset}>
+                                Start Over
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Footer */}
+                    <footer style={{ textAlign: 'center', marginTop: '3rem', color: 'var(--text-mid)', fontSize: '0.85rem' }}>
+                        <p>
+                            Not affiliated with the South Dakota Legislature.
+                            <br />
+                            Legislator data from <a href="https://sdlegislature.gov" target="_blank" rel="noopener" style={{ color: 'var(--blue-professional)' }}>sdlegislature.gov</a>
+                        </p>
+                    </footer>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>
