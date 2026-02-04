@@ -1155,17 +1155,16 @@ ${city || '[Your City]'}, SD`;
                             <div className="tab-row">
                                 <button className={`tab-btn ${mode === 'committee' ? 'active' : ''}`} onClick={() => { setMode('committee'); setSelected([]); setDistrict(null); }}>
                                     🏛️ Commerce & Energy Committee
+                                    <span style={{ display: 'block', fontSize: '0.75rem', fontWeight: 'normal', opacity: 0.8, marginTop: '0.25rem' }}>They vote first on SB 36</span>
                                 </button>
                                 <button className={`tab-btn ${mode === 'district' ? 'active' : ''}`} onClick={() => { setMode('district'); setSelected([]); }}>
                                     📍 My District Legislators
+                                    <span style={{ display: 'block', fontSize: '0.75rem', fontWeight: 'normal', opacity: 0.8, marginTop: '0.25rem' }}>Your local reps</span>
                                 </button>
                             </div>
 
                             {mode === 'committee' && (
                                 <>
-                                    <div style={{ background: 'var(--cream)', padding: '0.75rem 1rem', borderRadius: '8px', marginBottom: '1rem', fontSize: '0.85rem', color: 'var(--text-mid)' }}>
-                                        <strong style={{ color: 'var(--blue-pro)' }}>Why this committee?</strong> SB 36 is assigned to House Commerce & Energy. These 13 members will vote on whether the bill advances to the full House floor. Their vote is the first major hurdle.
-                                    </div>
                                     <div className="select-row">
                                         <button className="select-all-btn" onClick={selectAllCommittee}>
                                             {committee.every(m => isSelected(m)) ? '☐ Deselect All' : '☑ Select All 13'}
