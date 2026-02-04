@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Stop SB 36 - Protect Wildfire Victims' Rights in South Dakota</title>
+    <title>Stop SB 36 - Insurance Agents Take Action</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -968,7 +968,7 @@
                     const title = legislator.chamber === "Senate" ? "Senator" : "Representative";
                     return `Dear ${title} ${legislator.name.split(' ').pop()},
 
-My name is ${userName || '[Your Name]'}${userAgency ? `, and I am an insurance professional with ${userAgency}` : ''} in ${userCity || '[Your City]'}, South Dakota. I am writing to urge you to vote NO on SB 36.
+My name is ${userName || '[Your Name]'}${userAgency ? `, and I am an insurance agent with ${userAgency}` : ''} in ${userCity || '[Your City]'}, South Dakota. I am writing to urge you to vote NO on SB 36.
 
 As someone who works in the insurance industry, I see firsthand how this bill would harm South Dakota policyholders. SB 36 effectively eliminates carriers' subrogation rights when utilities cause wildfires.
 
@@ -1042,7 +1042,7 @@ ${userCity ? userCity + ', SD' : '[Your City, SD]'}${userPhone ? '\n' + userPhon
                     const title = legislator.chamber === "Senate" ? "Senator" : "Representative";
                     return `Dear ${title} ${legislator.name.split(' ').pop()},
 
-I am ${userName || '[Your Name]'}${userAgency ? `, an insurance professional with ${userAgency}` : ''}, writing to oppose SB 36.
+I am ${userName || '[Your Name]'}${userAgency ? `, an insurance agent with ${userAgency}` : ''}, writing to oppose SB 36.
 
 This bill is devastating for wildfire victims. It creates a near-impossible burden of proof for anyone trying to recover damages from a utility that caused a fire. Even when a utility's faulty equipment clearly started the blaze, victims would face capped damages and procedural hurdles designed to protect the utility.
 
@@ -1066,7 +1066,7 @@ ${userCity ? userCity + ', SD' : '[Your City, SD]'}${userPhone ? '\n' + userPhon
                     const title = legislator.chamber === "Senate" ? "Senator" : "Representative";
                     return `Dear ${title} ${legislator.name.split(' ').pop()},
 
-My name is ${userName || '[Your Name]'}${userAgency ? ` with ${userAgency}` : ''} in ${userCity || '[Your City]'}, and I'm writing as an insurance industry professional to oppose SB 36.
+My name is ${userName || '[Your Name]'}${userAgency ? ` with ${userAgency}` : ''} in ${userCity || '[Your City]'}, and I'm writing as an insurance agent to oppose SB 36.
 
 This bill would destabilize South Dakota's property insurance market. By eliminating strict liability and capping damages for utility-caused wildfires, SB 36 shifts massive potential losses onto insurers with no path to recovery from responsible parties.
 
@@ -1074,7 +1074,7 @@ The insurance industry response to this kind of legislation is predictable: rate
 
 South Dakota's insurance market is currently stable and competitive. SB 36 threatens that stability by forcing insurers to absorb losses that should rightfully be borne by negligent utilities.
 
-As an insurance professional who serves South Dakota families, I urge you to protect our market and our policyholders. Please vote NO on SB 36.
+As an insurance agent who serves South Dakota families, I urge you to protect our market and our policyholders. Please vote NO on SB 36.
 
 Respectfully,
 ${userName || '[Your Name]'}${userAgency ? '\n' + userAgency : ''}
@@ -1300,12 +1300,12 @@ ${userCity ? userCity + ', SD' : '[Your City, SD]'}${userPhone ? '\n' + userPhon
                         <div className="header-icon">🔥</div>
                         <span className="bill-badge">OPPOSE SB 36</span>
                         <h1>Stop SB 36</h1>
-                        <p>Protect wildfire victims' rights and keep insurance affordable in South Dakota. Contact your legislators today.</p>
+                        <p>Insurance agents: Take 2 minutes to tell your legislators why SB 36 is bad for policyholders and bad for South Dakota.</p>
                     </header>
 
                     <div className="alert-box">
-                        <h3>⚠️ Why This Matters</h3>
-                        <p><strong>SB 36</strong> lets utilities file wildfire mitigation plans and in exchange eliminates strict liability, caps damages, and makes it nearly impossible for victims to recover. When insurers can't recover from negligent utilities, those costs fall on <strong>policyholders through higher premiums</strong>.</p>
+                        <h3>⚠️ Why Agents Should Care</h3>
+                        <p><strong>SB 36</strong> guts subrogation rights. When a utility-caused fire burns down your client's property, carriers pay the claim — but under this bill, there's almost no path to recover from the responsible party. That cost lands on <strong>your policyholders through higher premiums</strong> or reduced coverage in fire-prone areas.</p>
                     </div>
 
                     <div className="steps">
@@ -1361,7 +1361,7 @@ ${userCity ? userCity + ', SD' : '[Your City, SD]'}${userPhone ? '\n' + userPhon
                             {contactMode === 'district' && !district && (
                                 <>
                                     <div className="form-group">
-                                        <label>Your South Dakota Address</label>
+                                        <label>Your Office Address in South Dakota</label>
                                         <input
                                             ref={inputRef}
                                             type="text"
@@ -1590,12 +1590,12 @@ ${userCity ? userCity + ', SD' : '[Your City, SD]'}${userPhone ? '\n' + userPhon
                             </div>
 
                             <div className="form-group">
-                                <label>Agency / Company</label>
+                                <label>Your Agency *</label>
                                 <input
                                     type="text"
                                     value={userAgency}
                                     onChange={(e) => setUserAgency(e.target.value)}
-                                    placeholder="Your insurance agency (optional)"
+                                    placeholder="Your agency name"
                                 />
                             </div>
 
