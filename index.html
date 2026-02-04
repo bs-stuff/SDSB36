@@ -23,11 +23,9 @@
             --orange-accent: #e87a3d;
             --cream: #faf8f5;
             --cream-dark: #f0ebe3;
-            --gold: #c9a962;
-            --gold-light: #e5d4a1;
             --text-dark: #1a1a1a;
             --text-mid: #4a4a4a;
-            --blue-professional: #1e4a6d;
+            --blue-pro: #1e4a6d;
             --blue-light: #3a7ca5;
         }
 
@@ -36,88 +34,79 @@
             background: var(--cream);
             color: var(--text-dark);
             min-height: 100vh;
-            line-height: 1.6;
-        }
-
-        /* Noise texture overlay */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.03;
-            pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            z-index: 1000;
+            line-height: 1.5;
         }
 
         .app-container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 2rem 1.5rem 4rem;
+            padding: 1.5rem 1rem 3rem;
         }
 
-        /* Header */
+        /* Compact Header */
         .header {
             text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
             border-bottom: 2px solid var(--red-dark);
         }
 
-        .header-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: var(--red-dark);
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
         .header p {
             color: var(--text-mid);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 0.95rem;
         }
 
         .bill-badge {
             display: inline-block;
             background: var(--red-dark);
             color: white;
-            padding: 0.35rem 1rem;
+            padding: 0.25rem 0.75rem;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
         }
 
-        /* Steps indicator */
+        /* Compact Alert */
+        .alert-box {
+            background: #fff5f5;
+            border-left: 4px solid var(--red-dark);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .alert-box strong {
+            color: var(--red-dark);
+        }
+
+        /* Steps - more compact */
         .steps {
             display: flex;
             justify-content: center;
             gap: 0.5rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .step {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
+            gap: 0.35rem;
+            padding: 0.4rem 0.75rem;
             background: white;
             border-radius: 50px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 500;
             color: var(--text-mid);
             border: 2px solid var(--cream-dark);
-            transition: all 0.3s ease;
         }
 
         .step.active {
@@ -127,134 +116,139 @@
         }
 
         .step.completed {
-            background: var(--blue-professional);
+            background: var(--blue-pro);
             color: white;
-            border-color: var(--blue-professional);
+            border-color: var(--blue-pro);
         }
 
-        .step-number {
-            width: 24px;
-            height: 24px;
+        .step-num {
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             background: var(--cream-dark);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
         }
 
-        .step.active .step-number,
-        .step.completed .step-number {
-            background: rgba(255,255,255,0.2);
+        .step.active .step-num,
+        .step.completed .step-num {
+            background: rgba(255,255,255,0.25);
         }
 
-        /* Card styles */
+        /* Cards */
         .card {
             background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            margin-bottom: 1rem;
         }
 
         .card-header {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .card-header h2 {
-            font-size: 1.4rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--red-dark);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.15rem;
         }
 
         .card-header p {
             color: var(--text-mid);
-            font-size: 0.95rem;
+            font-size: 0.85rem;
         }
 
-        /* Alert box */
-        .alert-box {
-            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
-            border: 2px solid var(--red-light);
-            border-radius: 12px;
-            padding: 1.25rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .alert-box h3 {
-            color: var(--red-dark);
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
+        /* Tab buttons */
+        .tab-row {
             display: flex;
-            align-items: center;
             gap: 0.5rem;
+            margin-bottom: 1rem;
         }
 
-        .alert-box p {
-            font-size: 0.9rem;
+        .tab-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid var(--cream-dark);
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            background: white;
             color: var(--text-mid);
-            line-height: 1.5;
+            transition: all 0.15s ease;
+        }
+
+        .tab-btn.active {
+            background: var(--blue-pro);
+            color: white;
+            border-color: var(--blue-pro);
+        }
+
+        .tab-btn:hover:not(.active) {
+            border-color: var(--blue-light);
         }
 
         /* Form elements */
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .form-group label {
             display: block;
             font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-
-        .input-wrapper {
-            position: relative;
+            margin-bottom: 0.35rem;
+            font-size: 0.9rem;
         }
 
         input[type="text"],
-        input[type="tel"],
-        input[type="email"] {
+        input[type="tel"] {
             width: 100%;
-            padding: 1rem 1.25rem;
-            font-size: 1.1rem;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
             font-family: 'JetBrains Mono', monospace;
             border: 2px solid var(--cream-dark);
-            border-radius: 12px;
+            border-radius: 8px;
             background: var(--cream);
-            transition: all 0.2s ease;
-            letter-spacing: 0.05em;
         }
 
-        input[type="text"]:focus,
-        input[type="tel"]:focus,
-        input[type="email"]:focus {
+        input:focus {
             outline: none;
             border-color: var(--blue-light);
             background: white;
         }
 
-        input[type="text"]::placeholder,
-        input[type="tel"]::placeholder,
-        input[type="email"]::placeholder {
-            color: #aaa;
+        input::placeholder {
             font-family: 'Outfit', sans-serif;
-            letter-spacing: 0;
+            color: #aaa;
+        }
+
+        select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            font-family: 'Outfit', sans-serif;
+            border: 2px solid var(--cream-dark);
+            border-radius: 8px;
+            background: var(--cream);
+            cursor: pointer;
         }
 
         .input-hint {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-mid);
-            margin-top: 0.5rem;
+            margin-top: 0.35rem;
         }
 
         .error-message {
             color: var(--red-mid);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            font-weight: 500;
+            font-size: 0.85rem;
+            margin-top: 0.35rem;
         }
 
         /* Buttons */
@@ -262,15 +256,15 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            font-size: 1rem;
+            gap: 0.4rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.95rem;
             font-weight: 600;
             font-family: 'Outfit', sans-serif;
             border: none;
-            border-radius: 12px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.15s ease;
         }
 
         .btn-primary {
@@ -280,7 +274,6 @@
 
         .btn-primary:hover {
             background: var(--red-mid);
-            transform: translateY(-2px);
         }
 
         .btn-secondary {
@@ -289,161 +282,197 @@
             border: 2px solid var(--red-dark);
         }
 
-        .btn-secondary:hover {
-            background: var(--cream-dark);
-        }
-
-        .btn-contact {
-            background: var(--blue-professional);
+        .btn-send {
+            background: var(--blue-pro);
             color: white;
             width: 100%;
-            padding: 1.25rem;
-            font-size: 1.1rem;
+            padding: 1rem;
+            font-size: 1rem;
         }
 
-        .btn-contact:hover {
+        .btn-send:hover {
             background: var(--blue-light);
-            transform: translateY(-2px);
         }
 
         .btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
-            transform: none;
         }
 
-        /* Tab buttons */
-        .tab-buttons {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            background: var(--cream);
-            padding: 0.5rem;
-            border-radius: 12px;
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            background: transparent;
-            color: var(--text-mid);
-        }
-
-        .tab-btn.active {
-            background: white;
-            color: var(--red-dark);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .tab-btn:hover:not(.active) {
-            background: rgba(255,255,255,0.5);
-        }
-
-        /* Legislator cards */
-        .legislators-grid {
+        /* Compact committee grid */
+        .committee-grid {
             display: grid;
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 0.5rem;
         }
 
-        .legislator-card {
+        .member-chip {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1.25rem;
-            background: var(--cream);
-            border-radius: 12px;
-            border: 2px solid transparent;
+            gap: 0.6rem;
+            padding: 0.6rem 0.75rem;
+            border-radius: 8px;
+            border: 2px solid var(--cream-dark);
+            background: white;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.15s ease;
         }
 
-        .legislator-card:hover {
+        .member-chip:hover {
             border-color: var(--blue-light);
         }
 
-        .legislator-card.selected {
-            background: var(--blue-professional);
+        .member-chip.selected {
+            background: var(--blue-pro);
+            border-color: var(--blue-pro);
             color: white;
         }
 
-        .legislator-avatar {
-            width: 56px;
-            height: 56px;
+        .chip-check {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            border: 2px solid var(--cream-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .member-chip.selected .chip-check {
+            background: white;
+            border-color: white;
+            color: var(--blue-pro);
+        }
+
+        .chip-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .chip-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chip-role {
+            font-size: 0.7rem;
+            opacity: 0.75;
+        }
+
+        /* District legislator cards - slightly larger */
+        .district-grid {
+            display: grid;
+            gap: 0.6rem;
+        }
+
+        .leg-card {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem;
+            background: var(--cream);
+            border-radius: 10px;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .leg-card:hover {
+            border-color: var(--blue-light);
+        }
+
+        .leg-card.selected {
+            background: var(--blue-pro);
+            color: white;
+        }
+
+        .leg-avatar {
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            background: var(--blue-professional);
+            background: var(--blue-pro);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1rem;
             flex-shrink: 0;
         }
 
-        .legislator-card.selected .legislator-avatar {
+        .leg-card.selected .leg-avatar {
             background: var(--blue-light);
-            color: white;
         }
 
-        .legislator-info {
-            flex: 1;
+        .leg-info { flex: 1; }
+
+        .leg-name {
+            font-weight: 600;
+            font-size: 1rem;
         }
 
-        .legislator-name {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 0.15rem;
-        }
-
-        .legislator-role {
-            font-size: 0.9rem;
+        .leg-role {
+            font-size: 0.8rem;
             opacity: 0.8;
         }
 
-        .legislator-party {
-            padding: 0.25rem 0.75rem;
+        .leg-party {
+            padding: 0.2rem 0.5rem;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             background: rgba(0,0,0,0.1);
         }
 
-        .legislator-card.selected .legislator-party {
+        .leg-card.selected .leg-party {
             background: rgba(255,255,255,0.2);
         }
 
-        /* Committee badge */
-        .committee-badge {
-            display: inline-block;
-            padding: 0.15rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            background: var(--orange-accent);
-            color: white;
-            margin-left: 0.5rem;
+        /* Select all row */
+        .select-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
         }
 
-        /* Template selector */
+        .select-all-btn {
+            padding: 0.4rem 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
+            border: 2px solid var(--blue-pro);
+            border-radius: 6px;
+            background: white;
+            color: var(--blue-pro);
+            cursor: pointer;
+        }
+
+        .select-all-btn:hover {
+            background: var(--blue-pro);
+            color: white;
+        }
+
+        /* Template cards - compact */
         .template-grid {
             display: grid;
-            gap: 0.75rem;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.5rem;
         }
 
         .template-card {
-            padding: 1rem;
-            background: var(--cream);
-            border-radius: 12px;
-            border: 2px solid transparent;
+            padding: 0.75rem;
+            border: 2px solid var(--cream-dark);
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            background: white;
+            transition: all 0.15s ease;
         }
 
         .template-card:hover {
@@ -451,308 +480,141 @@
         }
 
         .template-card.selected {
-            border-color: var(--blue-professional);
+            border-color: var(--blue-pro);
             background: rgba(30, 74, 109, 0.05);
         }
 
-        .template-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.5rem;
-        }
-
         .template-icon {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
         }
 
         .template-name {
             font-weight: 600;
-            font-size: 1rem;
-            color: var(--text-dark);
+            font-size: 0.85rem;
         }
 
         .template-desc {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: var(--text-mid);
-            line-height: 1.4;
+            line-height: 1.3;
+            margin-top: 0.25rem;
         }
+
+        /* Nav buttons */
+        .nav-row {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .nav-row .btn { flex: 1; }
 
         /* Message preview */
-        .message-preview {
+        .preview-box {
             background: var(--cream);
-            border-radius: 12px;
-            padding: 1.5rem;
+            border-radius: 8px;
+            padding: 1rem;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            line-height: 1.7;
+            font-size: 0.8rem;
+            line-height: 1.6;
             white-space: pre-wrap;
-            max-height: 300px;
+            max-height: 200px;
             overflow-y: auto;
+            margin-top: 0.5rem;
         }
 
-        /* Summary section */
-        .summary-item {
+        /* Recipients chips */
+        .recipients-row {
             display: flex;
-            justify-content: space-between;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--cream-dark);
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-bottom: 1rem;
         }
 
-        .summary-item:last-child {
-            border-bottom: none;
+        .recipient-chip {
+            padding: 0.25rem 0.5rem;
+            background: var(--blue-pro);
+            color: white;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
         }
 
-        .summary-label {
-            color: var(--text-mid);
-        }
-
-        .summary-value {
-            font-weight: 600;
-            text-align: right;
-        }
-
-        /* District info */
+        /* District badge */
         .district-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: var(--blue-professional);
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            background: var(--blue-pro);
             color: white;
             border-radius: 50px;
             font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        /* Navigation */
-        .nav-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .nav-buttons .btn {
-            flex: 1;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .card {
-            animation: fadeIn 0.4s ease;
-        }
-
-        /* Select all button */
-        .select-all-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: var(--cream);
-            border: 2px solid var(--blue-professional);
-            border-radius: 8px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
             font-size: 0.85rem;
-            color: var(--blue-professional);
-            cursor: pointer;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
-        .select-all-btn:hover {
-            background: var(--blue-professional);
-            color: white;
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--text-mid);
+            font-size: 0.8rem;
         }
 
-        /* Info box */
-        .info-box {
-            background: linear-gradient(135deg, #f0f7ff 0%, #e6f0fa 100%);
-            border: 2px solid var(--blue-light);
-            border-radius: 12px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-        }
-
-        .info-box .icon {
-            font-size: 1.25rem;
-            flex-shrink: 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            .app-container {
-                padding: 1rem 1rem 2rem;
-            }
-
-            .header {
-                margin-bottom: 1.5rem;
-                padding-bottom: 1rem;
-            }
-
-            .header-icon {
-                font-size: 2rem;
-                margin-bottom: 0.5rem;
-            }
-
-            .header h1 {
-                font-size: 1.5rem;
-                margin-bottom: 0.25rem;
-            }
-
-            .header p {
-                font-size: 0.85rem;
-                line-height: 1.4;
-            }
-
-            .steps {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.25rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .step {
-                font-size: 0.6rem;
-                padding: 0.3rem 0.2rem;
-                justify-content: center;
-                flex-direction: column;
-                gap: 0.15rem;
-            }
-
-            .step-number {
-                width: 18px;
-                height: 18px;
-                font-size: 0.65rem;
-            }
-
-            .card {
-                padding: 1rem;
-                border-radius: 12px;
-            }
-
-            .card-header {
-                margin-bottom: 1rem;
-            }
-
-            .card-header h2 {
-                font-size: 1.1rem;
-            }
-
-            .card-header p {
-                font-size: 0.85rem;
-            }
-
-            .tab-buttons {
-                flex-direction: column;
-            }
-
-            .form-group {
-                margin-bottom: 1rem;
-            }
-
-            .form-group label {
-                font-size: 0.85rem;
-                margin-bottom: 0.35rem;
-            }
-
-            input[type="text"],
-            input[type="tel"],
-            input[type="email"] {
-                padding: 0.75rem 1rem;
-                font-size: 0.95rem;
-            }
-
-            .input-hint {
-                font-size: 0.75rem;
-            }
-
-            .btn {
-                padding: 0.75rem 1rem;
-                font-size: 0.85rem;
-            }
-
-            .btn-contact {
-                padding: 0.85rem;
-                font-size: 0.95rem;
-            }
-
-            .nav-buttons {
-                margin-top: 1.25rem;
-                gap: 0.5rem;
-                flex-direction: column-reverse;
-            }
-
-            .legislator-card {
-                padding: 0.85rem;
-                gap: 0.75rem;
-            }
-
-            .legislator-avatar {
-                width: 44px;
-                height: 44px;
-                font-size: 1rem;
-            }
-
-            .legislator-name {
-                font-size: 0.95rem;
-            }
-
-            .legislator-role {
-                font-size: 0.8rem;
-            }
-
-            .legislator-party {
-                font-size: 0.7rem;
-                padding: 0.2rem 0.5rem;
-            }
-
-            .district-badge {
-                font-size: 0.85rem;
-                padding: 0.4rem 0.75rem;
-            }
-        }
+        footer a { color: var(--blue-pro); }
 
         /* Reset link */
         .reset-link {
             display: block;
             text-align: center;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             color: var(--text-mid);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             cursor: pointer;
         }
 
-        .reset-link:hover {
-            color: var(--red-dark);
+        .reset-link:hover { color: var(--red-dark); }
+
+        /* Two-column form */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
         }
 
-        /* Loading spinner */
-        .loading {
-            display: flex;
-            justify-content: center;
-            padding: 2rem;
+        /* Mobile adjustments */
+        @media (max-width: 600px) {
+            .app-container { padding: 1rem 0.75rem 2rem; }
+            .header h1 { font-size: 1.5rem; }
+            .header p { font-size: 0.85rem; }
+            .card { padding: 1rem; }
+            .card-header h2 { font-size: 1.05rem; }
+            .steps { gap: 0.25rem; }
+            .step { padding: 0.35rem 0.5rem; font-size: 0.7rem; }
+            .step-num { width: 16px; height: 16px; font-size: 0.6rem; }
+            .tab-row { flex-direction: column; }
+            .form-row { grid-template-columns: 1fr; }
+            .committee-grid { grid-template-columns: 1fr 1fr; }
+            .template-grid { grid-template-columns: 1fr 1fr; }
+            .nav-row { flex-direction: column-reverse; }
         }
 
+        @media (max-width: 400px) {
+            .committee-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Loading */
         .spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid var(--cream-dark);
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--cream-dark);
             border-top-color: var(--red-dark);
             border-radius: 50%;
-            animation: spin 1s linear infinite;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -761,7 +623,7 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
-        // South Dakota Legislators data (2026 session)
+        // SD Legislators (2026)
         const legislators = {
             1: { members: [
                 { name: "Michael Rohl", party: "R", email: "michael.rohl@sdlegislature.gov", chamber: "Senate" },
@@ -940,21 +802,21 @@
             ]},
         };
 
-        // House Commerce & Energy Committee members (2025-2026)
-        const committeeMembers = [
-            { name: "Karla Lems", party: "R", email: "karla.lems@sdlegislature.gov", chamber: "House", role: "Chair" },
-            { name: "Jessica Bahmuller", party: "R", email: "jessica.bahmuller@sdlegislature.gov", chamber: "House", role: "Vice Chair" },
-            { name: "Aaron Aylward", party: "R", email: "aaron.aylward@sdlegislature.gov", chamber: "House", role: "Member" },
-            { name: "Steve Duffy", party: "R", email: "steve.duffy@sdlegislature.gov", chamber: "House", role: "Member" },
-            { name: "Lana Greenfield", party: "R", email: "lana.greenfield@sdlegislature.gov", chamber: "House", role: "Member" },
-            { name: "Tony Kayser", party: "R", email: "tony.kayser@sdlegislature.gov", chamber: "House", role: "Member" },
-            { name: "Tina Mulally", party: "R", email: "tina.mulally@sdlegislature.gov", chamber: "House", role: "Member" },
-            { name: "Kaley Nolz", party: "R", email: "kaley.nolz@sdlegislature.gov", chamber: "House", role: "Member" },
-            { name: "Drew Peterson", party: "R", email: "drew.peterson@sdlegislature.gov", chamber: "House", role: "Member" },
-            { name: "Tesa Schwans", party: "R", email: "tesa.schwans@sdlegislature.gov", chamber: "House", role: "Member" },
-            { name: "William Shorma", party: "R", email: "william.shorma@sdlegislature.gov", chamber: "House", role: "Member" },
-            { name: "Mike Weisgram", party: "R", email: "mike.weisgram@sdlegislature.gov", chamber: "House", role: "Member" },
-            { name: "Nicole Uhre-Balk", party: "D", email: "nicole.uhre-balk@sdlegislature.gov", chamber: "House", role: "Member" },
+        // House Commerce & Energy Committee
+        const committee = [
+            { name: "Karla Lems", party: "R", email: "karla.lems@sdlegislature.gov", role: "Chair", district: 16 },
+            { name: "Jessica Bahmuller", party: "R", email: "jessica.bahmuller@sdlegislature.gov", role: "Vice Chair", district: 19 },
+            { name: "Aaron Aylward", party: "R", email: "aaron.aylward@sdlegislature.gov", role: "Member", district: 6 },
+            { name: "Steve Duffy", party: "R", email: "steve.duffy@sdlegislature.gov", role: "Member", district: 32 },
+            { name: "Lana Greenfield", party: "R", email: "lana.greenfield@sdlegislature.gov", role: "Member", district: 22 },
+            { name: "Tony Kayser", party: "R", email: "tony.kayser@sdlegislature.gov", role: "Member", district: 14 },
+            { name: "Tina Mulally", party: "R", email: "tina.mulally@sdlegislature.gov", role: "Member", district: 35 },
+            { name: "Kaley Nolz", party: "R", email: "kaley.nolz@sdlegislature.gov", role: "Member", district: 20 },
+            { name: "Drew Peterson", party: "R", email: "drew.peterson@sdlegislature.gov", role: "Member", district: 19 },
+            { name: "Tesa Schwans", party: "R", email: "tesa.schwans@sdlegislature.gov", role: "Member", district: 9 },
+            { name: "William Shorma", party: "R", email: "william.shorma@sdlegislature.gov", role: "Member", district: 17 },
+            { name: "Mike Weisgram", party: "R", email: "mike.weisgram@sdlegislature.gov", role: "Member", district: 24 },
+            { name: "Nicole Uhre-Balk", party: "D", email: "nicole.uhre-balk@sdlegislature.gov", role: "Member", district: 32 },
         ];
 
         // Message templates
@@ -963,333 +825,214 @@
                 id: "subrogation",
                 name: "Subrogation Rights",
                 icon: "⚖️",
-                description: "Focus on how SB 36 guts insurance carriers' ability to recover costs from utilities that cause fires.",
-                getMessage: (legislator, userName, userCity, userPhone, userAgency) => {
-                    const title = legislator.chamber === "Senate" ? "Senator" : "Representative";
-                    return `Dear ${title} ${legislator.name.split(' ').pop()},
+                desc: "Guts carriers' ability to recover from negligent utilities",
+                getMessage: (leg, name, city, phone, agency) => `Dear ${leg.chamber === "Senate" ? "Senator" : "Representative"} ${leg.name.split(' ').pop()},
 
-My name is ${userName || '[Your Name]'}${userAgency ? `, and I am an insurance agent with ${userAgency}` : ''} in ${userCity || '[Your City]'}, South Dakota. I am writing to urge you to vote NO on SB 36.
+My name is ${name || '[Your Name]'}${agency ? `, and I am an insurance agent with ${agency}` : ''} in ${city || '[Your City]'}, South Dakota. I urge you to vote NO on SB 36.
 
-As someone who works in the insurance industry, I see firsthand how this bill would harm South Dakota policyholders. SB 36 effectively eliminates carriers' subrogation rights when utilities cause wildfires.
+As someone who works in insurance, I see firsthand how this bill harms policyholders. SB 36 effectively eliminates carriers' subrogation rights when utilities cause wildfires.
 
-Here's what that means in practice: When a utility-caused fire destroys a policyholder's property, the insurance company pays the claim. Under current law, we can then pursue the responsible utility to recover those costs. This keeps premiums affordable and holds negligent parties accountable.
+When a utility-caused fire destroys property, insurance pays the claim. Under current law, we can pursue the responsible utility to recover costs. This keeps premiums affordable and holds negligent parties accountable.
 
-SB 36 creates a near-impossible burden of proof that would make recovery virtually impossible. Those costs don't disappear - they get passed directly to policyholders through higher premiums or reduced coverage in fire-prone areas.
+SB 36 creates a near-impossible burden of proof that makes recovery virtually impossible. Those costs get passed to policyholders through higher premiums or reduced coverage in fire-prone areas.
 
-This bill protects utility shareholders at the expense of South Dakota families and businesses. Please vote NO on SB 36.
+This bill protects utility shareholders at the expense of South Dakota families. Please vote NO on SB 36.
 
 Sincerely,
-${userName || '[Your Name]'}${userAgency ? '\n' + userAgency : ''}
-${userCity ? userCity + ', SD' : '[Your City, SD]'}${userPhone ? '\n' + userPhone : ''}`;
-                }
+${name || '[Your Name]'}${agency ? '\n' + agency : ''}
+${city ? city + ', SD' : '[Your City, SD]'}${phone ? '\n' + phone : ''}`
             },
             {
                 id: "premiums",
                 name: "Premium Impact",
                 icon: "💰",
-                description: "Emphasize how shifting liability away from utilities will raise insurance costs for South Dakotans.",
-                getMessage: (legislator, userName, userCity, userPhone, userAgency) => {
-                    const title = legislator.chamber === "Senate" ? "Senator" : "Representative";
-                    return `Dear ${title} ${legislator.name.split(' ').pop()},
+                desc: "Shifts costs to policyholders via higher rates",
+                getMessage: (leg, name, city, phone, agency) => `Dear ${leg.chamber === "Senate" ? "Senator" : "Representative"} ${leg.name.split(' ').pop()},
 
-I am ${userName || '[Your Name]'}${userAgency ? ` with ${userAgency}` : ''}, writing from ${userCity || '[Your City]'} to oppose SB 36.
+I am ${name || '[Your Name]'}${agency ? ` with ${agency}` : ''}, writing from ${city || '[Your City]'} to oppose SB 36.
 
-This bill will directly increase insurance costs for South Dakota homeowners and businesses. Here's why:
+This bill will directly increase insurance costs for South Dakota homeowners and businesses.
 
-When utilities cause wildfires and insurance pays claims, carriers currently recover those costs from the responsible party. SB 36 makes that recovery nearly impossible by capping damages and creating an unreasonable burden of proof.
+When utilities cause wildfires and insurance pays claims, carriers currently recover costs from the responsible party. SB 36 makes that nearly impossible by capping damages and creating an unreasonable burden of proof.
 
-Where do those unrecovered costs go? They don't vanish - they spread across all policyholders through higher premiums. In fire-prone areas, coverage may become unaffordable or unavailable entirely.
+Those unrecovered costs spread across all policyholders through higher premiums. In fire-prone areas, coverage may become unaffordable or unavailable.
 
-We've seen this play out in western states where similar utility-friendly legislation passed. California's insurance crisis is a cautionary tale. South Dakota shouldn't follow that path.
+We've seen this in western states with similar legislation. California's insurance crisis is a cautionary tale. South Dakota shouldn't follow that path.
 
-Please protect South Dakota consumers and vote NO on SB 36.
+Please protect consumers and vote NO on SB 36.
 
 Respectfully,
-${userName || '[Your Name]'}${userAgency ? '\n' + userAgency : ''}
-${userCity ? userCity + ', SD' : '[Your City, SD]'}${userPhone ? '\n' + userPhone : ''}`;
-                }
+${name || '[Your Name]'}${agency ? '\n' + agency : ''}
+${city ? city + ', SD' : '[Your City, SD]'}${phone ? '\n' + phone : ''}`
             },
             {
                 id: "accountability",
                 name: "Utility Accountability",
                 icon: "🔌",
-                description: "Focus on how this bill removes incentives for utilities to maintain safe infrastructure.",
-                getMessage: (legislator, userName, userCity, userPhone, userAgency) => {
-                    const title = legislator.chamber === "Senate" ? "Senator" : "Representative";
-                    return `Dear ${title} ${legislator.name.split(' ').pop()},
+                desc: "Removes incentive for utilities to maintain safe infrastructure",
+                getMessage: (leg, name, city, phone, agency) => `Dear ${leg.chamber === "Senate" ? "Senator" : "Representative"} ${leg.name.split(' ').pop()},
 
-My name is ${userName || '[Your Name]'}${userAgency ? ` from ${userAgency}` : ''} in ${userCity || '[Your City]'}. I strongly urge you to oppose SB 36.
+My name is ${name || '[Your Name]'}${agency ? ` from ${agency}` : ''} in ${city || '[Your City]'}. I urge you to oppose SB 36.
 
-This bill removes a critical incentive for utilities to maintain safe infrastructure. Under current law, if a utility's negligence causes a wildfire, they face strict liability. This motivates investment in proper maintenance, vegetation management, and equipment upgrades.
+This bill removes a critical incentive for utilities to maintain safe infrastructure. Under current law, if a utility's negligence causes a wildfire, they face strict liability. This motivates investment in maintenance and equipment upgrades.
 
-SB 36 lets utilities file a "mitigation plan" and in exchange eliminates strict liability. The message to utilities is clear: file some paperwork, and you're shielded from accountability when your equipment starts fires.
+SB 36 lets utilities file a "mitigation plan" and eliminates strict liability. The message: file paperwork and you're shielded when your equipment starts fires.
 
-Who pays when accountability disappears? Insurance carriers absorb the immediate costs, but ultimately South Dakota policyholders bear the burden through higher premiums.
+Who pays when accountability disappears? Insurance carriers absorb immediate costs, but South Dakota policyholders bear the burden through higher premiums.
 
-Utilities are monopolies - ratepayers can't switch providers. The least we can do is hold them accountable when their negligence destroys property. Please vote NO on SB 36.
+Utilities are monopolies - ratepayers can't switch. The least we can do is hold them accountable for negligence. Please vote NO on SB 36.
 
 Thank you,
-${userName || '[Your Name]'}${userAgency ? '\n' + userAgency : ''}
-${userCity ? userCity + ', SD' : '[Your City, SD]'}${userPhone ? '\n' + userPhone : ''}`;
-                }
+${name || '[Your Name]'}${agency ? '\n' + agency : ''}
+${city ? city + ', SD' : '[Your City, SD]'}${phone ? '\n' + phone : ''}`
             },
             {
                 id: "victims",
                 name: "Victim Rights",
                 icon: "🏠",
-                description: "Highlight how SB 36 makes it nearly impossible for wildfire victims to recover damages.",
-                getMessage: (legislator, userName, userCity, userPhone, userAgency) => {
-                    const title = legislator.chamber === "Senate" ? "Senator" : "Representative";
-                    return `Dear ${title} ${legislator.name.split(' ').pop()},
+                desc: "Makes it nearly impossible for victims to recover damages",
+                getMessage: (leg, name, city, phone, agency) => `Dear ${leg.chamber === "Senate" ? "Senator" : "Representative"} ${leg.name.split(' ').pop()},
 
-I am ${userName || '[Your Name]'}${userAgency ? `, an insurance agent with ${userAgency}` : ''}, writing to oppose SB 36.
+I am ${name || '[Your Name]'}${agency ? `, an insurance agent with ${agency}` : ''}, writing to oppose SB 36.
 
-This bill is devastating for wildfire victims. It creates a near-impossible burden of proof for anyone trying to recover damages from a utility that caused a fire. Even when a utility's faulty equipment clearly started the blaze, victims would face capped damages and procedural hurdles designed to protect the utility.
+This bill is devastating for wildfire victims. It creates a near-impossible burden of proof for recovering damages from utilities that cause fires. Even when faulty equipment clearly started the blaze, victims face capped damages and procedural hurdles designed to protect utilities.
 
-Insurance helps, but policies have limits. When a family loses everything in a utility-caused fire, they deserve their day in court - not a system rigged against them.
+Insurance helps, but policies have limits. When families lose everything in a utility-caused fire, they deserve their day in court - not a system rigged against them.
 
-SB 36 is part of a coordinated utility industry push that's rolled through western states. It benefits utility shareholders at the expense of the families and businesses they're supposed to serve.
+SB 36 is part of a coordinated utility industry push through western states. It benefits shareholders at the expense of families they're supposed to serve.
 
-South Dakota should protect its citizens, not shield negligent utilities. Please vote NO on SB 36.
+South Dakota should protect its citizens. Please vote NO on SB 36.
 
 Sincerely,
-${userName || '[Your Name]'}${userAgency ? '\n' + userAgency : ''}
-${userCity ? userCity + ', SD' : '[Your City, SD]'}${userPhone ? '\n' + userPhone : ''}`;
-                }
+${name || '[Your Name]'}${agency ? '\n' + agency : ''}
+${city ? city + ', SD' : '[Your City, SD]'}${phone ? '\n' + phone : ''}`
             },
             {
-                id: "industry",
-                name: "Insurance Industry Impact",
-                icon: "📋",
-                description: "Explain the broader insurance market implications of this legislation.",
-                getMessage: (legislator, userName, userCity, userPhone, userAgency) => {
-                    const title = legislator.chamber === "Senate" ? "Senator" : "Representative";
-                    return `Dear ${title} ${legislator.name.split(' ').pop()},
+                id: "market",
+                name: "Market Stability",
+                icon: "📊",
+                desc: "Threatens stability of SD's property insurance market",
+                getMessage: (leg, name, city, phone, agency) => `Dear ${leg.chamber === "Senate" ? "Senator" : "Representative"} ${leg.name.split(' ').pop()},
 
-My name is ${userName || '[Your Name]'}${userAgency ? ` with ${userAgency}` : ''} in ${userCity || '[Your City]'}, and I'm writing as an insurance agent to oppose SB 36.
+My name is ${name || '[Your Name]'}${agency ? ` with ${agency}` : ''} in ${city || '[Your City]'}, and I'm writing as an insurance agent to oppose SB 36.
 
-This bill would destabilize South Dakota's property insurance market. By eliminating strict liability and capping damages for utility-caused wildfires, SB 36 shifts massive potential losses onto insurers with no path to recovery from responsible parties.
+This bill would destabilize South Dakota's property insurance market. By eliminating strict liability and capping damages for utility-caused wildfires, SB 36 shifts massive potential losses onto insurers with no path to recovery.
 
-The insurance industry response to this kind of legislation is predictable: rate increases, coverage restrictions, and in severe cases, market withdrawal from high-risk areas. We've watched this unfold in other states.
+The industry response is predictable: rate increases, coverage restrictions, and in severe cases, market withdrawal from high-risk areas. We've watched this unfold elsewhere.
 
-South Dakota's insurance market is currently stable and competitive. SB 36 threatens that stability by forcing insurers to absorb losses that should rightfully be borne by negligent utilities.
+South Dakota's insurance market is currently stable and competitive. SB 36 threatens that by forcing insurers to absorb losses that should be borne by negligent utilities.
 
-As an insurance agent who serves South Dakota families, I urge you to protect our market and our policyholders. Please vote NO on SB 36.
+Please protect our market and policyholders. Vote NO on SB 36.
 
 Respectfully,
-${userName || '[Your Name]'}${userAgency ? '\n' + userAgency : ''}
-${userCity ? userCity + ', SD' : '[Your City, SD]'}${userPhone ? '\n' + userPhone : ''}`;
-                }
+${name || '[Your Name]'}${agency ? '\n' + agency : ''}
+${city ? city + ', SD' : '[Your City, SD]'}${phone ? '\n' + phone : ''}`
             }
         ];
 
         function App() {
             const [step, setStep] = useState(1);
-            const [contactMode, setContactMode] = useState('district'); // 'district' or 'committee'
-            const [address, setAddress] = useState('');
+            const [mode, setMode] = useState(null); // 'committee' or 'district'
             const [district, setDistrict] = useState(null);
-            const [loading, setLoading] = useState(false);
-            const [selectedLegislators, setSelectedLegislators] = useState([]);
-            const [selectedTemplate, setSelectedTemplate] = useState(null);
-            const [userFirstName, setUserFirstName] = useState('');
-            const [userLastName, setUserLastName] = useState('');
-            const [userCity, setUserCity] = useState('');
-            const [userPhone, setUserPhone] = useState('');
-            const [userAgency, setUserAgency] = useState('');
+            const [selected, setSelected] = useState([]);
+            const [template, setTemplate] = useState(null);
+            const [firstName, setFirstName] = useState('');
+            const [lastName, setLastName] = useState('');
+            const [city, setCity] = useState('');
+            const [phone, setPhone] = useState('');
+            const [agency, setAgency] = useState('');
             const [error, setError] = useState('');
-            const [emailsSent, setEmailsSent] = useState(0);
-            const [matchedAddress, setMatchedAddress] = useState('');
-            const [sendingAll, setSendingAll] = useState(false);
-
-            const userName = [userFirstName, userLastName].filter(Boolean).join(' ') || '';
+            const [loading, setLoading] = useState(false);
+            const [sending, setSending] = useState(false);
+            const [matchedAddr, setMatchedAddr] = useState('');
 
             const inputRef = useRef(null);
-            const autocompleteRef = useRef(null);
+            const acRef = useRef(null);
+            const fullName = [firstName, lastName].filter(Boolean).join(' ');
 
-            // Initialize Google Places Autocomplete
+            // Google Places
             useEffect(() => {
-                if (!inputRef.current || !window.google || autocompleteRef.current) return;
-
-                const sdBounds = new window.google.maps.LatLngBounds(
+                if (!inputRef.current || !window.google || acRef.current) return;
+                const bounds = new window.google.maps.LatLngBounds(
                     new window.google.maps.LatLng(42.4, -104.5),
                     new window.google.maps.LatLng(46.0, -96.4)
                 );
-
-                autocompleteRef.current = new window.google.maps.places.Autocomplete(inputRef.current, {
+                acRef.current = new window.google.maps.places.Autocomplete(inputRef.current, {
                     types: ['address'],
                     componentRestrictions: { country: 'us' },
-                    bounds: sdBounds,
+                    bounds,
                     strictBounds: true,
                     fields: ['formatted_address', 'geometry', 'address_components']
                 });
-
-                autocompleteRef.current.addListener('place_changed', async () => {
-                    const place = autocompleteRef.current.getPlace();
-
-                    if (!place.geometry) {
-                        setError('Please select an address from the dropdown');
-                        return;
-                    }
-
-                    const stateComponent = place.address_components?.find(
-                        c => c.types.includes('administrative_area_level_1')
-                    );
-
-                    if (stateComponent?.short_name !== 'SD') {
-                        setError('Please enter a South Dakota address');
-                        return;
-                    }
-
-                    const cityComponent = place.address_components?.find(
-                        c => c.types.includes('locality')
-                    );
-                    if (cityComponent) {
-                        setUserCity(cityComponent.long_name);
-                    }
-
-                    setAddress(place.formatted_address);
-                    setMatchedAddress(place.formatted_address);
-
-                    const lat = place.geometry.location.lat();
-                    const lng = place.geometry.location.lng();
-                    await lookupDistrictByCoords(lat, lng);
+                acRef.current.addListener('place_changed', async () => {
+                    const place = acRef.current.getPlace();
+                    if (!place.geometry) { setError('Select an address from dropdown'); return; }
+                    const state = place.address_components?.find(c => c.types.includes('administrative_area_level_1'));
+                    if (state?.short_name !== 'SD') { setError('Please enter a South Dakota address'); return; }
+                    const cityComp = place.address_components?.find(c => c.types.includes('locality'));
+                    if (cityComp) setCity(cityComp.long_name);
+                    setMatchedAddr(place.formatted_address);
+                    await lookupDistrict(place.geometry.location.lat(), place.geometry.location.lng());
                 });
-            }, [step, contactMode]);
+            }, [mode]);
 
-            const lookupDistrictByCoords = async (lat, lng) => {
+            const lookupDistrict = async (lat, lng) => {
                 setLoading(true);
                 setError('');
-
                 try {
-                    const url = `https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Legislative/MapServer/identify?` +
-                        `geometry=${lng},${lat}&geometryType=esriGeometryPoint&sr=4326&` +
-                        `layers=all:1&tolerance=0&mapExtent=-104,43,-96,46&imageDisplay=800,600,96&` +
-                        `returnGeometry=false&f=json`;
-
-                    const response = await fetch(url);
-                    const data = await response.json();
-
-                    if (data.results && data.results.length > 0) {
-                        const districtName = data.results[0].attributes.BASENAME || data.results[0].attributes.NAME;
-                        const districtNum = parseInt(districtName, 10);
-
-                        if (legislators[districtNum]) {
-                            setDistrict(districtNum);
-                            goToStep(2);
-                        } else {
-                            setError(`District ${districtNum} not found. Please try a different address.`);
-                        }
-                    } else {
-                        setError('Could not determine your legislative district. Please try again.');
-                    }
-                } catch (err) {
-                    console.error('District lookup error:', err);
-                    setError('Error looking up district. Please try again.');
-                }
+                    const url = `https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Legislative/MapServer/identify?geometry=${lng},${lat}&geometryType=esriGeometryPoint&sr=4326&layers=all:1&tolerance=0&mapExtent=-104,43,-96,46&imageDisplay=800,600,96&returnGeometry=false&f=json`;
+                    const res = await fetch(url);
+                    const data = await res.json();
+                    if (data.results?.length > 0) {
+                        const num = parseInt(data.results[0].attributes.BASENAME || data.results[0].attributes.NAME, 10);
+                        if (legislators[num]) { setDistrict(num); }
+                        else { setError(`District ${num} not found.`); }
+                    } else { setError('Could not determine district.'); }
+                } catch { setError('Error looking up district.'); }
                 setLoading(false);
             };
 
-            const toggleLegislator = (legislator) => {
-                const id = legislator.email;
-                const exists = selectedLegislators.find(l => l.email === id);
-
-                if (exists) {
-                    setSelectedLegislators(selectedLegislators.filter(l => l.email !== id));
+            const toggle = (leg) => {
+                const id = leg.email;
+                if (selected.find(l => l.email === id)) {
+                    setSelected(selected.filter(l => l.email !== id));
                 } else {
-                    setSelectedLegislators([...selectedLegislators, legislator]);
+                    setSelected([...selected, leg]);
                 }
             };
 
-            const isLegislatorSelected = (legislator) => {
-                return selectedLegislators.some(l => l.email === legislator.email);
-            };
+            const isSelected = (leg) => selected.some(l => l.email === leg.email);
 
             const selectAllCommittee = () => {
-                const allSelected = committeeMembers.every(m => isLegislatorSelected(m));
-                if (allSelected) {
-                    setSelectedLegislators([]);
-                } else {
-                    setSelectedLegislators([...committeeMembers]);
-                }
+                const all = committee.every(m => isSelected(m));
+                setSelected(all ? [] : [...committee]);
             };
 
-            const openMailto = (legislator) => {
-                const message = selectedTemplate.getMessage(legislator, userName, userCity, userPhone, userAgency);
-                const subject = `Opposition to SB 36 - Utility Wildfire Liability`;
-                const body = encodeURIComponent(message);
-                window.open(`mailto:${legislator.email}?subject=${encodeURIComponent(subject)}&body=${body}`, '_blank');
-                setEmailsSent(prev => prev + 1);
-
-                trackEngagement('email', legislator);
-            };
-
-            const sendAllEmails = async () => {
-                setSendingAll(true);
-
-                selectedLegislators.forEach((legislator, index) => {
+            const sendEmails = () => {
+                setSending(true);
+                selected.forEach((leg, i) => {
                     setTimeout(() => {
-                        openMailto(legislator);
-                    }, index * 800);
+                        const msg = template.getMessage(leg, fullName, city, phone, agency);
+                        const subj = encodeURIComponent('Opposition to SB 36 - Utility Wildfire Liability');
+                        window.open(`mailto:${leg.email}?subject=${subj}&body=${encodeURIComponent(msg)}`, '_blank');
+                    }, i * 700);
                 });
-
-                setTimeout(() => {
-                    setSendingAll(false);
-                }, selectedLegislators.length * 800 + 500);
+                setTimeout(() => setSending(false), selected.length * 700 + 500);
             };
 
             const reset = () => {
-                goToStep(1);
-                setContactMode('district');
-                setAddress('');
+                setStep(1);
+                setMode(null);
                 setDistrict(null);
-                setMatchedAddress('');
-                setSelectedLegislators([]);
-                setSelectedTemplate(null);
-                setUserFirstName('');
-                setUserLastName('');
-                setUserCity('');
-                setUserPhone('');
-                setUserAgency('');
+                setSelected([]);
+                setTemplate(null);
+                setFirstName('');
+                setLastName('');
+                setCity('');
+                setPhone('');
+                setAgency('');
+                setMatchedAddr('');
                 setError('');
-                setEmailsSent(0);
-            };
-
-            const trackEngagement = async (actionType, legislator) => {
-                try {
-                    await fetch('/api/track', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            district: district || 0,
-                            bill_number: 'SB 36',
-                            stance: 'oppose',
-                            template_name: selectedTemplate?.name || 'unknown',
-                            action_type: actionType,
-                            legislator_name: legislator?.name || null,
-                            legislator_chamber: legislator?.chamber || null,
-                            contact_mode: contactMode,
-                            agency: userAgency || null
-                        })
-                    });
-                } catch (err) {
-                    console.log('Tracking failed:', err);
-                }
-            };
-
-            const goToStep = (stepNumber) => {
-                if (stepNumber === 1) {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                } else {
-                    setTimeout(() => {
-                        const stepsElement = document.querySelector('.steps');
-                        if (stepsElement) {
-                            const yOffset = -20;
-                            const y = stepsElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-                            window.scrollTo({ top: y, behavior: 'smooth' });
-                        }
-                    }, 10);
-                }
-                setStep(stepNumber);
             };
 
             const districtData = district ? legislators[district] : null;
@@ -1297,392 +1040,212 @@ ${userCity ? userCity + ', SD' : '[Your City, SD]'}${userPhone ? '\n' + userPhon
             return (
                 <div className="app-container">
                     <header className="header">
-                        <div className="header-icon">🔥</div>
                         <span className="bill-badge">OPPOSE SB 36</span>
                         <h1>Stop SB 36</h1>
-                        <p>Insurance agents: Take 2 minutes to tell your legislators why SB 36 is bad for policyholders and bad for South Dakota.</p>
+                        <p>Insurance agents: Take 2 minutes to tell legislators why this bill hurts policyholders.</p>
                     </header>
 
                     <div className="alert-box">
-                        <h3>⚠️ Why Agents Should Care</h3>
-                        <p><strong>SB 36</strong> guts subrogation rights. When a utility-caused fire burns down your client's property, carriers pay the claim — but under this bill, there's almost no path to recover from the responsible party. That cost lands on <strong>your policyholders through higher premiums</strong> or reduced coverage in fire-prone areas.</p>
+                        <strong>Why agents should care:</strong> SB 36 guts subrogation. When utilities cause fires, carriers pay claims but can't recover from the responsible party. That cost lands on <strong>your policyholders</strong> via higher premiums.
                     </div>
 
                     <div className="steps">
-                        <div
-                            className={`step ${step >= 1 ? 'active' : ''} ${step > 1 ? 'completed' : ''}`}
-                            onClick={() => goToStep(1)}
-                            style={{ cursor: 'pointer' }}
-                        >
-                            <span className="step-number">1</span>
-                            Select
+                        <div className={`step ${step >= 1 ? 'active' : ''} ${step > 1 ? 'completed' : ''}`}>
+                            <span className="step-num">1</span> Select
                         </div>
-                        <div
-                            className={`step ${step >= 2 ? 'active' : ''} ${step > 2 ? 'completed' : ''}`}
-                            onClick={() => selectedLegislators.length > 0 && goToStep(2)}
-                            style={{ cursor: selectedLegislators.length > 0 ? 'pointer' : 'not-allowed', opacity: selectedLegislators.length > 0 ? 1 : 0.6 }}
-                        >
-                            <span className="step-number">2</span>
-                            Message
+                        <div className={`step ${step >= 2 ? 'active' : ''} ${step > 2 ? 'completed' : ''}`}>
+                            <span className="step-num">2</span> Message
                         </div>
-                        <div
-                            className={`step ${step >= 3 ? 'active' : ''}`}
-                            onClick={() => selectedTemplate && goToStep(3)}
-                            style={{ cursor: selectedTemplate ? 'pointer' : 'not-allowed', opacity: selectedTemplate ? 1 : 0.6 }}
-                        >
-                            <span className="step-number">3</span>
-                            Send
+                        <div className={`step ${step >= 3 ? 'active' : ''}`}>
+                            <span className="step-num">3</span> Send
                         </div>
                     </div>
 
-                    {/* Step 1: Select Legislators */}
+                    {/* Step 1 */}
                     {step === 1 && (
                         <div className="card">
                             <div className="card-header">
-                                <h2>Who Do You Want to Contact?</h2>
-                                <p>Choose to contact your district legislators or the House Commerce & Energy Committee hearing SB 36.</p>
+                                <h2>Who do you want to contact?</h2>
                             </div>
 
-                            <div className="tab-buttons">
-                                <button
-                                    className={`tab-btn ${contactMode === 'district' ? 'active' : ''}`}
-                                    onClick={() => { setContactMode('district'); setSelectedLegislators([]); }}
-                                >
-                                    📍 My District Legislators
-                                </button>
-                                <button
-                                    className={`tab-btn ${contactMode === 'committee' ? 'active' : ''}`}
-                                    onClick={() => { setContactMode('committee'); setSelectedLegislators([]); setDistrict(null); }}
-                                >
+                            <div className="tab-row">
+                                <button className={`tab-btn ${mode === 'committee' ? 'active' : ''}`} onClick={() => { setMode('committee'); setSelected([]); setDistrict(null); }}>
                                     🏛️ Commerce & Energy Committee
                                 </button>
+                                <button className={`tab-btn ${mode === 'district' ? 'active' : ''}`} onClick={() => { setMode('district'); setSelected([]); }}>
+                                    📍 My District Legislators
+                                </button>
                             </div>
 
-                            {contactMode === 'district' && !district && (
+                            {mode === 'committee' && (
+                                <>
+                                    <div className="select-row">
+                                        <button className="select-all-btn" onClick={selectAllCommittee}>
+                                            {committee.every(m => isSelected(m)) ? '☐ Deselect All' : '☑ Select All 13'}
+                                        </button>
+                                        <span style={{ color: 'var(--text-mid)' }}>{selected.length} selected</span>
+                                    </div>
+                                    <div className="committee-grid">
+                                        {committee.map((m, i) => (
+                                            <div key={i} className={`member-chip ${isSelected(m) ? 'selected' : ''}`} onClick={() => toggle(m)}>
+                                                <div className="chip-check">{isSelected(m) && '✓'}</div>
+                                                <div className="chip-info">
+                                                    <div className="chip-name">{m.name}</div>
+                                                    <div className="chip-role">
+                                                        {m.role !== 'Member' ? m.role : `District ${m.district}`} • {m.party}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </>
+                            )}
+
+                            {mode === 'district' && !district && (
                                 <>
                                     <div className="form-group">
-                                        <label>Your Office Address in South Dakota</label>
-                                        <input
-                                            ref={inputRef}
-                                            type="text"
-                                            placeholder="Start typing your address..."
-                                            disabled={loading}
-                                        />
+                                        <label>Your Office Address</label>
+                                        <input ref={inputRef} type="text" placeholder="Start typing..." disabled={loading} />
                                         {error && <div className="error-message">{error}</div>}
-                                        {loading && (
-                                            <div className="input-hint" style={{ color: 'var(--blue-professional)' }}>
-                                                🔍 Looking up your district...
-                                            </div>
-                                        )}
-                                        <div className="input-hint">
-                                            Select your address from the dropdown
-                                        </div>
+                                        {loading && <div className="input-hint"><div className="spinner" style={{ display: 'inline-block', width: 16, height: 16, marginRight: 8, verticalAlign: 'middle' }}></div>Looking up district...</div>}
                                     </div>
-
-                                    <div className="form-group" style={{ marginTop: '1rem', marginBottom: 0 }}>
-                                        <label>Or select your district directly</label>
-                                        <select
-                                            onChange={(e) => {
-                                                const distNum = parseInt(e.target.value);
-                                                if (distNum && legislators[distNum]) {
-                                                    setDistrict(distNum);
-                                                    setMatchedAddress(`District ${distNum}`);
-                                                }
-                                            }}
-                                            style={{
-                                                width: '100%',
-                                                padding: '1rem 1.25rem',
-                                                fontSize: '1.1rem',
-                                                fontFamily: "'Outfit', sans-serif",
-                                                border: '2px solid var(--cream-dark)',
-                                                borderRadius: '12px',
-                                                background: 'var(--cream)',
-                                                cursor: 'pointer',
-                                                color: 'var(--text-dark)'
-                                            }}
-                                            defaultValue=""
-                                        >
-                                            <option value="" disabled>Choose district...</option>
-                                            {Array.from({length: 35}, (_, i) => i + 1).map(num => (
-                                                <option key={num} value={num}>
-                                                    District {num} - {legislators[num]?.members.map(m => m.name.split(' ').pop()).join(', ')}
-                                                </option>
+                                    <div className="form-group">
+                                        <label>Or select district</label>
+                                        <select defaultValue="" onChange={(e) => {
+                                            const n = parseInt(e.target.value);
+                                            if (n && legislators[n]) { setDistrict(n); setMatchedAddr(`District ${n}`); }
+                                        }}>
+                                            <option value="" disabled>Choose...</option>
+                                            {Array.from({length: 35}, (_, i) => i + 1).map(n => (
+                                                <option key={n} value={n}>District {n} - {legislators[n]?.members.map(m => m.name.split(' ').pop()).join(', ')}</option>
                                             ))}
                                         </select>
                                     </div>
                                 </>
                             )}
 
-                            {contactMode === 'district' && district && districtData && (
+                            {mode === 'district' && district && districtData && (
                                 <>
-                                    <div className="district-badge">
-                                        📍 District {district}
-                                    </div>
-                                    {matchedAddress && (
-                                        <div className="input-hint" style={{ marginBottom: '1rem' }}>
-                                            {matchedAddress}
-                                        </div>
-                                    )}
-
-                                    <div className="info-box">
-                                        <span className="icon">💡</span>
-                                        <span>Contacting all three legislators maximizes your impact!</span>
-                                    </div>
-
-                                    <div className="legislators-grid">
-                                        {districtData.members.map((member, i) => (
-                                            <div
-                                                key={i}
-                                                className={`legislator-card ${isLegislatorSelected(member) ? 'selected' : ''}`}
-                                                onClick={() => toggleLegislator(member)}
-                                            >
-                                                <div className="legislator-avatar">
-                                                    {member.name.split(' ').map(n => n[0]).join('')}
+                                    <div className="district-badge">📍 District {district}</div>
+                                    {matchedAddr && <div className="input-hint" style={{ marginBottom: '0.75rem' }}>{matchedAddr}</div>}
+                                    <div className="district-grid">
+                                        {districtData.members.map((m, i) => (
+                                            <div key={i} className={`leg-card ${isSelected(m) ? 'selected' : ''}`} onClick={() => toggle(m)}>
+                                                <div className="leg-avatar">{m.name.split(' ').map(n => n[0]).join('')}</div>
+                                                <div className="leg-info">
+                                                    <div className="leg-name">{m.name}</div>
+                                                    <div className="leg-role">State {m.chamber === 'Senate' ? 'Senator' : 'Representative'}</div>
                                                 </div>
-                                                <div className="legislator-info">
-                                                    <div className="legislator-name">{member.name}</div>
-                                                    <div className="legislator-role">State {member.chamber === "Senate" ? "Senator" : "Representative"}</div>
-                                                </div>
-                                                <span className="legislator-party">{member.party}</span>
+                                                <span className="leg-party">{m.party}</span>
                                             </div>
                                         ))}
                                     </div>
-
-                                    <div style={{ marginTop: '1rem' }}>
-                                        <span
-                                            className="reset-link"
-                                            onClick={() => { setDistrict(null); setSelectedLegislators([]); setMatchedAddress(''); }}
-                                            style={{ marginTop: 0 }}
-                                        >
-                                            Change district
-                                        </span>
-                                    </div>
+                                    <div className="reset-link" onClick={() => { setDistrict(null); setSelected([]); setMatchedAddr(''); }}>Change district</div>
                                 </>
                             )}
 
-                            {contactMode === 'committee' && (
-                                <>
-                                    <div className="info-box">
-                                        <span className="icon">🏛️</span>
-                                        <span>The House Commerce & Energy Committee will hear SB 36. These are the members who will vote on whether to advance the bill.</span>
-                                    </div>
-
-                                    <button className="select-all-btn" onClick={selectAllCommittee}>
-                                        {committeeMembers.every(m => isLegislatorSelected(m)) ? '✓ All Selected' : 'Select All 13 Members'}
-                                    </button>
-
-                                    <div className="legislators-grid">
-                                        {committeeMembers.map((member, i) => (
-                                            <div
-                                                key={i}
-                                                className={`legislator-card ${isLegislatorSelected(member) ? 'selected' : ''}`}
-                                                onClick={() => toggleLegislator(member)}
-                                            >
-                                                <div className="legislator-avatar">
-                                                    {member.name.split(' ').map(n => n[0]).join('')}
-                                                </div>
-                                                <div className="legislator-info">
-                                                    <div className="legislator-name">
-                                                        {member.name}
-                                                        {member.role !== 'Member' && (
-                                                            <span className="committee-badge">{member.role}</span>
-                                                        )}
-                                                    </div>
-                                                    <div className="legislator-role">House Commerce & Energy</div>
-                                                </div>
-                                                <span className="legislator-party">{member.party}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </>
-                            )}
-
-                            {(contactMode === 'committee' || (contactMode === 'district' && district)) && (
-                                <div className="nav-buttons">
-                                    <button
-                                        className="btn btn-primary"
-                                        onClick={() => goToStep(2)}
-                                        disabled={selectedLegislators.length === 0}
-                                    >
-                                        Continue with {selectedLegislators.length} Legislator{selectedLegislators.length !== 1 ? 's' : ''} →
+                            {mode && (mode === 'committee' || district) && (
+                                <div className="nav-row">
+                                    <button className="btn btn-primary" onClick={() => setStep(2)} disabled={selected.length === 0}>
+                                        Continue with {selected.length} →
                                     </button>
                                 </div>
                             )}
                         </div>
                     )}
 
-                    {/* Step 2: Choose Message Template */}
+                    {/* Step 2 */}
                     {step === 2 && (
                         <div className="card">
                             <div className="card-header">
-                                <h2>Choose Your Message Focus</h2>
-                                <p>Select the angle that resonates most with you. All templates oppose SB 36.</p>
+                                <h2>Choose your message focus</h2>
+                                <p>All templates oppose SB 36. Pick the angle that fits you.</p>
                             </div>
 
                             <div className="template-grid">
-                                {templates.map(template => (
-                                    <div
-                                        key={template.id}
-                                        className={`template-card ${selectedTemplate?.id === template.id ? 'selected' : ''}`}
-                                        onClick={() => setSelectedTemplate(template)}
-                                    >
-                                        <div className="template-header">
-                                            <span className="template-icon">{template.icon}</span>
-                                            <span className="template-name">{template.name}</span>
-                                        </div>
-                                        <div className="template-desc">{template.description}</div>
+                                {templates.map(t => (
+                                    <div key={t.id} className={`template-card ${template?.id === t.id ? 'selected' : ''}`} onClick={() => setTemplate(t)}>
+                                        <div className="template-icon">{t.icon}</div>
+                                        <div className="template-name">{t.name}</div>
+                                        <div className="template-desc">{t.desc}</div>
                                     </div>
                                 ))}
                             </div>
 
-                            <div className="nav-buttons">
-                                <button className="btn btn-secondary" onClick={() => goToStep(1)}>
-                                    ← Back
-                                </button>
-                                <button
-                                    className="btn btn-primary"
-                                    onClick={() => goToStep(3)}
-                                    disabled={!selectedTemplate}
-                                >
-                                    Continue →
-                                </button>
+                            <div className="nav-row">
+                                <button className="btn btn-secondary" onClick={() => setStep(1)}>← Back</button>
+                                <button className="btn btn-primary" onClick={() => setStep(3)} disabled={!template}>Continue →</button>
                             </div>
                         </div>
                     )}
 
-                    {/* Step 3: User Info & Send */}
+                    {/* Step 3 */}
                     {step === 3 && (
                         <div className="card">
                             <div className="card-header">
-                                <h2>Send Your Message{selectedLegislators.length > 1 ? 's' : ''}</h2>
-                                <p>Add your information and send {selectedLegislators.length} email{selectedLegislators.length > 1 ? 's' : ''}.</p>
+                                <h2>Your info & send</h2>
                             </div>
 
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                                <div className="form-group" style={{ marginBottom: 0 }}>
+                            <div className="form-row">
+                                <div className="form-group">
                                     <label>First Name *</label>
-                                    <input
-                                        type="text"
-                                        value={userFirstName}
-                                        onChange={(e) => setUserFirstName(e.target.value)}
-                                        placeholder="First"
-                                    />
+                                    <input type="text" value={firstName} onChange={e => setFirstName(e.target.value)} placeholder="First" />
                                 </div>
-                                <div className="form-group" style={{ marginBottom: 0 }}>
+                                <div className="form-group">
                                     <label>Last Name *</label>
-                                    <input
-                                        type="text"
-                                        value={userLastName}
-                                        onChange={(e) => setUserLastName(e.target.value)}
-                                        placeholder="Last"
-                                    />
+                                    <input type="text" value={lastName} onChange={e => setLastName(e.target.value)} placeholder="Last" />
                                 </div>
                             </div>
 
-                            <div className="form-group" style={{ marginTop: '1.5rem' }}>
-                                <label>Your City *</label>
-                                <input
-                                    type="text"
-                                    value={userCity}
-                                    onChange={(e) => setUserCity(e.target.value)}
-                                    placeholder="Enter your city"
-                                />
+                            <div className="form-row">
+                                <div className="form-group">
+                                    <label>City *</label>
+                                    <input type="text" value={city} onChange={e => setCity(e.target.value)} placeholder="Your city" />
+                                </div>
+                                <div className="form-group">
+                                    <label>Your Agency *</label>
+                                    <input type="text" value={agency} onChange={e => setAgency(e.target.value)} placeholder="Agency name" />
+                                </div>
                             </div>
 
                             <div className="form-group">
-                                <label>Your Agency *</label>
-                                <input
-                                    type="text"
-                                    value={userAgency}
-                                    onChange={(e) => setUserAgency(e.target.value)}
-                                    placeholder="Your agency name"
-                                />
+                                <label>Phone (optional)</label>
+                                <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="(605) 555-1234" />
                             </div>
 
-                            <div className="form-group">
-                                <label>Phone Number</label>
-                                <input
-                                    type="tel"
-                                    value={userPhone}
-                                    onChange={(e) => setUserPhone(e.target.value)}
-                                    placeholder="(605) 555-1234 (optional)"
-                                />
-                            </div>
-
-                            {/* Summary */}
-                            <div style={{ marginTop: '1.5rem', marginBottom: '1rem' }}>
-                                <h3 style={{ fontSize: '1rem', marginBottom: '0.75rem', color: 'var(--red-dark)' }}>📨 Sending to</h3>
-                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                                    {selectedLegislators.map(leg => (
-                                        <span key={leg.email} style={{
-                                            padding: '0.35rem 0.65rem',
-                                            background: 'var(--blue-professional)',
-                                            color: 'white',
-                                            borderRadius: '16px',
-                                            fontSize: '0.8rem'
-                                        }}>
-                                            {leg.chamber === 'Senate' ? 'Sen.' : 'Rep.'} {leg.name}
-                                        </span>
+                            <div style={{ marginBottom: '1rem' }}>
+                                <label style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '0.5rem', display: 'block' }}>Sending to:</label>
+                                <div className="recipients-row">
+                                    {selected.map(l => (
+                                        <span key={l.email} className="recipient-chip">{l.name.split(' ').pop()}</span>
                                     ))}
                                 </div>
                             </div>
 
-                            {/* Message preview */}
-                            <details style={{ marginBottom: '1.5rem' }}>
-                                <summary style={{
-                                    cursor: 'pointer',
-                                    fontSize: '0.9rem',
-                                    fontWeight: '500',
-                                    color: 'var(--blue-professional)',
-                                    marginBottom: '0.5rem'
-                                }}>
-                                    👁 Preview message
-                                </summary>
-                                <div className="message-preview" style={{ marginTop: '0.5rem' }}>
-                                    {selectedTemplate?.getMessage(
-                                        selectedLegislators[0] || { name: 'Legislator', chamber: 'House' },
-                                        userName || '[Your Name]',
-                                        userCity || '[Your City]',
-                                        userPhone,
-                                        userAgency
-                                    )}
+                            <details>
+                                <summary style={{ cursor: 'pointer', fontSize: '0.85rem', color: 'var(--blue-pro)', fontWeight: 500 }}>Preview message</summary>
+                                <div className="preview-box">
+                                    {template?.getMessage(selected[0] || { name: 'Legislator', chamber: 'House' }, fullName || '[Name]', city || '[City]', phone, agency)}
                                 </div>
                             </details>
 
-                            <button
-                                className="btn btn-contact"
-                                onClick={sendAllEmails}
-                                disabled={sendingAll || !userName || !userCity}
-                            >
-                                {sendingAll ? '📧 Opening emails...' : `📧 Send ${selectedLegislators.length} Email${selectedLegislators.length > 1 ? 's' : ''}`}
+                            <button className="btn btn-send" onClick={sendEmails} disabled={sending || !fullName || !city || !agency} style={{ marginTop: '1rem' }}>
+                                {sending ? 'Opening emails...' : `📧 Send ${selected.length} Email${selected.length > 1 ? 's' : ''}`}
                             </button>
-
-                            <div className="input-hint" style={{ textAlign: 'center', marginTop: '1rem' }}>
-                                {selectedLegislators.length > 1
-                                    ? `This will open ${selectedLegislators.length} email windows — one for each legislator.`
-                                    : 'This will open your email client with the message ready to send.'
-                                }
+                            <div className="input-hint" style={{ textAlign: 'center', marginTop: '0.5rem' }}>
+                                Opens your email client with message ready to send
                             </div>
 
-                            <div className="nav-buttons">
-                                <button className="btn btn-secondary" onClick={() => goToStep(2)}>
-                                    ← Back
-                                </button>
+                            <div className="nav-row">
+                                <button className="btn btn-secondary" onClick={() => setStep(2)}>← Back</button>
                             </div>
 
-                            <div className="reset-link" onClick={reset}>
-                                Start Over
-                            </div>
+                            <div className="reset-link" onClick={reset}>Start over</div>
                         </div>
                     )}
 
-                    {/* Footer */}
-                    <footer style={{ textAlign: 'center', marginTop: '3rem', color: 'var(--text-mid)', fontSize: '0.85rem' }}>
-                        <p>
-                            Not affiliated with the South Dakota Legislature.
-                            <br />
-                            Legislator data from <a href="https://sdlegislature.gov" target="_blank" rel="noopener" style={{ color: 'var(--blue-professional)' }}>sdlegislature.gov</a>
-                        </p>
+                    <footer>
+                        Not affiliated with the SD Legislature. Data from <a href="https://sdlegislature.gov" target="_blank">sdlegislature.gov</a>
                     </footer>
                 </div>
             );
