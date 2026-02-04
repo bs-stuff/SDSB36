@@ -1244,12 +1244,12 @@ ${city || '[Your City]'}, SD`;
                     {step === 2 && (
                         <div className="card">
                             <div className="card-header">
-                                <h2>Write your message</h2>
-                                <p>Write your own message or start from a template below.</p>
+                                <h2>Your message</h2>
+                                <p>Pick a template or write your own.</p>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="form-row" style={{ marginBottom: '1rem' }}>
+                                <div className="form-group" style={{ marginBottom: 0 }}>
                                     <label>Your Name *</label>
                                     <input type="text" value={fullName} onChange={e => {
                                         const parts = e.target.value.split(' ');
@@ -1257,7 +1257,7 @@ ${city || '[Your City]'}, SD`;
                                         setLastName(parts.slice(1).join(' ') || '');
                                     }} placeholder="Your full name" />
                                 </div>
-                                <div className="form-group">
+                                <div className="form-group" style={{ marginBottom: 0 }}>
                                     <label>City *</label>
                                     <input type="text" value={city} onChange={e => setCity(e.target.value)} placeholder="Your city" />
                                 </div>
@@ -1268,20 +1268,8 @@ ${city || '[Your City]'}, SD`;
                                 <input type="text" value={agency} onChange={e => setAgency(e.target.value)} placeholder="Agency name (optional)" />
                             </div>
 
-                            <div className="form-group">
-                                <label>Your Message</label>
-                                <textarea
-                                    value={customMessage}
-                                    onChange={e => { setCustomMessage(e.target.value); setSelectedTemplate(null); }}
-                                    placeholder="Write your message here, or choose a template below to get started..."
-                                />
-                                <div className="input-hint">The greeting will be personalized for each legislator.</div>
-                            </div>
-
-                            <div className="template-section">
-                                <div className="template-header">
-                                    <h3>Or start from a template:</h3>
-                                </div>
+                            <div style={{ marginBottom: '1rem' }}>
+                                <label style={{ display: 'block', fontWeight: 600, marginBottom: '0.5rem', fontSize: '0.95rem' }}>Choose a template:</label>
                                 <div className="template-grid">
                                     {templates.map(t => (
                                         <div key={t.id} className={`template-card ${selectedTemplate?.id === t.id ? 'selected' : ''}`} onClick={() => applyTemplate(t)}>
@@ -1291,6 +1279,16 @@ ${city || '[Your City]'}, SD`;
                                         </div>
                                     ))}
                                 </div>
+                            </div>
+
+                            <div className="form-group">
+                                <label>Your Message</label>
+                                <textarea
+                                    value={customMessage}
+                                    onChange={e => { setCustomMessage(e.target.value); setSelectedTemplate(null); }}
+                                    placeholder="Select a template above, or write your own message here..."
+                                />
+                                <div className="input-hint">The greeting will be personalized for each legislator. Feel free to edit.</div>
                             </div>
 
                             <div className="nav-row">
