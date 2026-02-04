@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Stop SB 36 - Insurance Agents Take Action</title>
+    <title>SB 36 Action - Insurance Agents Take Action</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -34,103 +34,116 @@
             background: var(--cream);
             color: var(--text-dark);
             min-height: 100vh;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .app-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 1.5rem 1rem 3rem;
+            padding: 2rem 1.5rem 4rem;
         }
 
-        /* Compact Header */
+        /* Header */
         .header {
             text-align: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--red-dark);
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--blue-pro);
         }
 
         .header h1 {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: 800;
-            color: var(--red-dark);
-            margin-bottom: 0.25rem;
+            color: var(--blue-pro);
+            margin-bottom: 0.5rem;
         }
 
         .header p {
             color: var(--text-mid);
-            font-size: 0.95rem;
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .bill-badge {
             display: inline-block;
-            background: var(--red-dark);
+            background: var(--blue-pro);
             color: white;
-            padding: 0.25rem 0.75rem;
+            padding: 0.3rem 1rem;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.8rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
         }
 
-        /* Compact Alert */
+        /* Alert */
         .alert-box {
-            background: #fff5f5;
-            border-left: 4px solid var(--red-dark);
+            background: #f0f7ff;
+            border-left: 4px solid var(--blue-pro);
             border-radius: 8px;
-            padding: 0.75rem 1rem;
-            margin-bottom: 1.5rem;
-            font-size: 0.85rem;
+            padding: 1rem 1.25rem;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
         }
 
         .alert-box strong {
-            color: var(--red-dark);
+            color: var(--blue-pro);
         }
 
-        /* Steps - more compact */
+        /* Steps */
         .steps {
             display: flex;
             justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
         }
 
         .step {
             display: flex;
             align-items: center;
-            gap: 0.35rem;
-            padding: 0.4rem 0.75rem;
+            gap: 0.5rem;
+            padding: 0.6rem 1.25rem;
             background: white;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             font-weight: 500;
             color: var(--text-mid);
             border: 2px solid var(--cream-dark);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .step:hover {
+            border-color: var(--blue-light);
         }
 
         .step.active {
-            background: var(--red-dark);
-            color: white;
-            border-color: var(--red-dark);
-        }
-
-        .step.completed {
             background: var(--blue-pro);
             color: white;
             border-color: var(--blue-pro);
         }
 
+        .step.completed {
+            background: var(--blue-light);
+            color: white;
+            border-color: var(--blue-light);
+        }
+
+        .step.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
         .step-num {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             background: var(--cream-dark);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
         }
 
         .step.active .step-num,
@@ -141,43 +154,43 @@
         /* Cards */
         .card {
             background: white;
-            border-radius: 12px;
-            padding: 1.25rem;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            margin-bottom: 1rem;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            margin-bottom: 1.5rem;
         }
 
         .card-header {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .card-header h2 {
-            font-size: 1.15rem;
+            font-size: 1.35rem;
             font-weight: 700;
-            color: var(--red-dark);
-            margin-bottom: 0.15rem;
+            color: var(--blue-pro);
+            margin-bottom: 0.25rem;
         }
 
         .card-header p {
             color: var(--text-mid);
-            font-size: 0.85rem;
+            font-size: 0.95rem;
         }
 
         /* Tab buttons */
         .tab-row {
             display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
         }
 
         .tab-btn {
             flex: 1;
-            padding: 0.75rem;
+            padding: 1rem;
             border: 2px solid var(--cream-dark);
-            border-radius: 8px;
+            border-radius: 10px;
             font-family: 'Outfit', sans-serif;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             cursor: pointer;
             background: white;
             color: var(--text-mid);
@@ -196,59 +209,68 @@
 
         /* Form elements */
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
         }
 
         .form-group label {
             display: block;
             font-weight: 600;
-            margin-bottom: 0.35rem;
-            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
         }
 
         input[type="text"],
-        input[type="tel"] {
+        input[type="tel"],
+        textarea {
             width: 100%;
-            padding: 0.75rem 1rem;
+            padding: 0.875rem 1rem;
             font-size: 1rem;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Outfit', sans-serif;
             border: 2px solid var(--cream-dark);
-            border-radius: 8px;
+            border-radius: 10px;
             background: var(--cream);
+            transition: all 0.15s ease;
         }
 
-        input:focus {
+        textarea {
+            min-height: 200px;
+            resize: vertical;
+            line-height: 1.5;
+        }
+
+        input:focus,
+        textarea:focus {
             outline: none;
             border-color: var(--blue-light);
             background: white;
         }
 
-        input::placeholder {
-            font-family: 'Outfit', sans-serif;
+        input::placeholder,
+        textarea::placeholder {
             color: #aaa;
         }
 
         select {
             width: 100%;
-            padding: 0.75rem 1rem;
+            padding: 0.875rem 1rem;
             font-size: 1rem;
             font-family: 'Outfit', sans-serif;
             border: 2px solid var(--cream-dark);
-            border-radius: 8px;
+            border-radius: 10px;
             background: var(--cream);
             cursor: pointer;
         }
 
         .input-hint {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-mid);
-            margin-top: 0.35rem;
+            margin-top: 0.5rem;
         }
 
         .error-message {
             color: var(--red-mid);
-            font-size: 0.85rem;
-            margin-top: 0.35rem;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
         }
 
         /* Buttons */
@@ -256,38 +278,42 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.4rem;
-            padding: 0.75rem 1.5rem;
-            font-size: 0.95rem;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            font-size: 1rem;
             font-weight: 600;
             font-family: 'Outfit', sans-serif;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.15s ease;
         }
 
         .btn-primary {
-            background: var(--red-dark);
+            background: var(--blue-pro);
             color: white;
         }
 
         .btn-primary:hover {
-            background: var(--red-mid);
+            background: var(--blue-light);
         }
 
         .btn-secondary {
             background: var(--cream);
-            color: var(--red-dark);
-            border: 2px solid var(--red-dark);
+            color: var(--blue-pro);
+            border: 2px solid var(--blue-pro);
+        }
+
+        .btn-secondary:hover {
+            background: var(--cream-dark);
         }
 
         .btn-send {
             background: var(--blue-pro);
             color: white;
             width: 100%;
-            padding: 1rem;
-            font-size: 1rem;
+            padding: 1.125rem;
+            font-size: 1.05rem;
         }
 
         .btn-send:hover {
@@ -299,19 +325,19 @@
             cursor: not-allowed;
         }
 
-        /* Compact committee grid */
+        /* Committee grid */
         .committee-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 0.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 0.75rem;
         }
 
         .member-chip {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
-            padding: 0.6rem 0.75rem;
-            border-radius: 8px;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
             border: 2px solid var(--cream-dark);
             background: white;
             cursor: pointer;
@@ -329,14 +355,14 @@
         }
 
         .chip-check {
-            width: 18px;
-            height: 18px;
-            border-radius: 4px;
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
             border: 2px solid var(--cream-dark);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: bold;
             flex-shrink: 0;
         }
@@ -354,32 +380,30 @@
 
         .chip-name {
             font-weight: 600;
-            font-size: 0.85rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            font-size: 0.95rem;
         }
 
         .chip-role {
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             opacity: 0.75;
         }
 
-        /* District legislator cards - slightly larger */
+        /* District legislator cards */
         .district-grid {
             display: grid;
-            gap: 0.6rem;
+            gap: 0.75rem;
         }
 
         .leg-card {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 0.85rem;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
             background: var(--cream);
-            border-radius: 10px;
+            border-radius: 12px;
             border: 2px solid transparent;
             cursor: pointer;
+            transition: all 0.15s ease;
         }
 
         .leg-card:hover {
@@ -392,8 +416,8 @@
         }
 
         .leg-avatar {
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             background: var(--blue-pro);
             color: white;
@@ -401,7 +425,7 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.1rem;
             flex-shrink: 0;
         }
 
@@ -413,18 +437,18 @@
 
         .leg-name {
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.05rem;
         }
 
         .leg-role {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             opacity: 0.8;
         }
 
         .leg-party {
-            padding: 0.2rem 0.5rem;
+            padding: 0.25rem 0.6rem;
             border-radius: 50px;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 600;
             background: rgba(0,0,0,0.1);
         }
@@ -438,20 +462,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 0.75rem;
-            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
         }
 
         .select-all-btn {
-            padding: 0.4rem 0.75rem;
-            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
             font-weight: 600;
             font-family: 'Outfit', sans-serif;
             border: 2px solid var(--blue-pro);
-            border-radius: 6px;
+            border-radius: 8px;
             background: white;
             color: var(--blue-pro);
             cursor: pointer;
+            transition: all 0.15s ease;
         }
 
         .select-all-btn:hover {
@@ -459,17 +484,36 @@
             color: white;
         }
 
-        /* Template cards - compact */
+        /* Template cards */
+        .template-section {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--cream-dark);
+        }
+
+        .template-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .template-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
         .template-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 0.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.75rem;
         }
 
         .template-card {
-            padding: 0.75rem;
+            padding: 1rem;
             border: 2px solid var(--cream-dark);
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             background: white;
             transition: all 0.15s ease;
@@ -485,80 +529,66 @@
         }
 
         .template-icon {
-            font-size: 1.25rem;
-            margin-bottom: 0.25rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.35rem;
         }
 
         .template-name {
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
         .template-desc {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-mid);
-            line-height: 1.3;
+            line-height: 1.4;
             margin-top: 0.25rem;
         }
 
         /* Nav buttons */
         .nav-row {
             display: flex;
-            gap: 0.75rem;
-            margin-top: 1.25rem;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
         .nav-row .btn { flex: 1; }
-
-        /* Message preview */
-        .preview-box {
-            background: var(--cream);
-            border-radius: 8px;
-            padding: 1rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            max-height: 200px;
-            overflow-y: auto;
-            margin-top: 0.5rem;
-        }
 
         /* Recipients chips */
         .recipients-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.35rem;
-            margin-bottom: 1rem;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .recipient-chip {
-            padding: 0.25rem 0.5rem;
+            padding: 0.35rem 0.75rem;
             background: var(--blue-pro);
             color: white;
-            border-radius: 12px;
-            font-size: 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 500;
         }
 
         /* District badge */
         .district-badge {
             display: inline-block;
-            padding: 0.35rem 0.75rem;
+            padding: 0.4rem 1rem;
             background: var(--blue-pro);
             color: white;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.85rem;
-            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             color: var(--text-mid);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
         }
 
         footer a { color: var(--blue-pro); }
@@ -567,51 +597,61 @@
         .reset-link {
             display: block;
             text-align: center;
-            margin-top: 1rem;
+            margin-top: 1.25rem;
             color: var(--text-mid);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             cursor: pointer;
         }
 
-        .reset-link:hover { color: var(--red-dark); }
+        .reset-link:hover { color: var(--blue-pro); }
 
         /* Two-column form */
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
+            gap: 1rem;
         }
 
         /* Mobile adjustments */
         @media (max-width: 600px) {
             .app-container { padding: 1rem 0.75rem 2rem; }
+            .header { margin-bottom: 1.25rem; padding-bottom: 1rem; }
             .header h1 { font-size: 1.5rem; }
-            .header p { font-size: 0.85rem; }
-            .card { padding: 1rem; }
-            .card-header h2 { font-size: 1.05rem; }
-            .steps { gap: 0.25rem; }
-            .step { padding: 0.35rem 0.5rem; font-size: 0.7rem; }
-            .step-num { width: 16px; height: 16px; font-size: 0.6rem; }
-            .tab-row { flex-direction: column; }
+            .header p { font-size: 0.9rem; }
+            .alert-box { padding: 0.75rem 1rem; font-size: 0.85rem; margin-bottom: 1.25rem; }
+            .steps { gap: 0.35rem; margin-bottom: 1.25rem; }
+            .step { padding: 0.4rem 0.6rem; font-size: 0.75rem; }
+            .step-num { width: 18px; height: 18px; font-size: 0.65rem; }
+            .card { padding: 1.25rem; border-radius: 12px; }
+            .card-header { margin-bottom: 1rem; }
+            .card-header h2 { font-size: 1.1rem; }
+            .card-header p { font-size: 0.85rem; }
+            .tab-row { flex-direction: column; gap: 0.5rem; }
+            .tab-btn { padding: 0.75rem; font-size: 0.9rem; }
             .form-row { grid-template-columns: 1fr; }
-            .committee-grid { grid-template-columns: 1fr 1fr; }
+            .committee-grid { grid-template-columns: 1fr; }
             .template-grid { grid-template-columns: 1fr 1fr; }
-            .nav-row { flex-direction: column-reverse; }
+            .nav-row { flex-direction: column-reverse; gap: 0.75rem; }
+            .member-chip { padding: 0.6rem 0.75rem; }
+            .chip-name { font-size: 0.9rem; }
+            textarea { min-height: 150px; }
         }
 
         @media (max-width: 400px) {
-            .committee-grid { grid-template-columns: 1fr; }
+            .template-grid { grid-template-columns: 1fr; }
         }
 
         /* Loading */
         .spinner {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             border: 2px solid var(--cream-dark);
-            border-top-color: var(--red-dark);
+            border-top-color: var(--blue-pro);
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
-            margin: 0 auto;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
         }
 
         @keyframes spin { to { transform: rotate(360deg); } }
@@ -819,123 +859,106 @@
             { name: "Nicole Uhre-Balk", party: "D", email: "nicole.uhre-balk@sdlegislature.gov", role: "Member", district: 32 },
         ];
 
-        // Message templates
+        // Pre-made templates
         const templates = [
             {
                 id: "subrogation",
                 name: "Subrogation Rights",
                 icon: "⚖️",
-                desc: "Guts carriers' ability to recover from negligent utilities",
-                getMessage: (leg, name, city, phone, agency) => `Dear ${leg.chamber === "Senate" ? "Senator" : "Representative"} ${leg.name.split(' ').pop()},
+                desc: "Focus on carriers' recovery rights",
+                text: (leg, name, city, agency) => `Dear ${leg.chamber === "Senate" ? "Senator" : "Representative"} ${leg.name.split(' ').pop()},
 
-My name is ${name || '[Your Name]'}${agency ? `, and I am an insurance agent with ${agency}` : ''} in ${city || '[Your City]'}, South Dakota. I urge you to vote NO on SB 36.
+My name is ${name}${agency ? `, and I am an insurance agent with ${agency}` : ''} in ${city}, South Dakota. I am writing regarding SB 36.
 
-As someone who works in insurance, I see firsthand how this bill harms policyholders. SB 36 effectively eliminates carriers' subrogation rights when utilities cause wildfires.
+As someone who works in insurance, I have concerns about how this bill affects carriers' subrogation rights when utilities cause wildfires. When a utility-caused fire destroys property, insurance pays the claim. Under current law, carriers can pursue the responsible utility to recover costs, which keeps premiums affordable.
 
-When a utility-caused fire destroys property, insurance pays the claim. Under current law, we can pursue the responsible utility to recover costs. This keeps premiums affordable and holds negligent parties accountable.
+SB 36 creates significant barriers to that recovery. Those unrecovered costs will ultimately be passed to policyholders through higher premiums or reduced coverage in fire-prone areas.
 
-SB 36 creates a near-impossible burden of proof that makes recovery virtually impossible. Those costs get passed to policyholders through higher premiums or reduced coverage in fire-prone areas.
-
-This bill protects utility shareholders at the expense of South Dakota families. Please vote NO on SB 36.
+I urge you to consider these impacts as this bill moves forward.
 
 Sincerely,
-${name || '[Your Name]'}${agency ? '\n' + agency : ''}
-${city ? city + ', SD' : '[Your City, SD]'}${phone ? '\n' + phone : ''}`
+${name}${agency ? '\n' + agency : ''}
+${city}, SD`
             },
             {
                 id: "premiums",
                 name: "Premium Impact",
                 icon: "💰",
-                desc: "Shifts costs to policyholders via higher rates",
-                getMessage: (leg, name, city, phone, agency) => `Dear ${leg.chamber === "Senate" ? "Senator" : "Representative"} ${leg.name.split(' ').pop()},
+                desc: "How costs shift to policyholders",
+                text: (leg, name, city, agency) => `Dear ${leg.chamber === "Senate" ? "Senator" : "Representative"} ${leg.name.split(' ').pop()},
 
-I am ${name || '[Your Name]'}${agency ? ` with ${agency}` : ''}, writing from ${city || '[Your City]'} to oppose SB 36.
+I am ${name}${agency ? ` with ${agency}` : ''}, writing from ${city} regarding SB 36.
 
-This bill will directly increase insurance costs for South Dakota homeowners and businesses.
+This bill will impact insurance costs for South Dakota homeowners and businesses. When utilities cause wildfires and insurers can't recover from the responsible party, those costs spread across policyholders through higher premiums.
 
-When utilities cause wildfires and insurance pays claims, carriers currently recover costs from the responsible party. SB 36 makes that nearly impossible by capping damages and creating an unreasonable burden of proof.
-
-Those unrecovered costs spread across all policyholders through higher premiums. In fire-prone areas, coverage may become unaffordable or unavailable.
-
-We've seen this in western states with similar legislation. California's insurance crisis is a cautionary tale. South Dakota shouldn't follow that path.
-
-Please protect consumers and vote NO on SB 36.
+We've seen this pattern in other states with similar legislation. I ask that you carefully consider the premium implications for South Dakota consumers as you evaluate this bill.
 
 Respectfully,
-${name || '[Your Name]'}${agency ? '\n' + agency : ''}
-${city ? city + ', SD' : '[Your City, SD]'}${phone ? '\n' + phone : ''}`
+${name}${agency ? '\n' + agency : ''}
+${city}, SD`
             },
             {
                 id: "accountability",
                 name: "Utility Accountability",
                 icon: "🔌",
-                desc: "Removes incentive for utilities to maintain safe infrastructure",
-                getMessage: (leg, name, city, phone, agency) => `Dear ${leg.chamber === "Senate" ? "Senator" : "Representative"} ${leg.name.split(' ').pop()},
+                desc: "Infrastructure maintenance incentives",
+                text: (leg, name, city, agency) => `Dear ${leg.chamber === "Senate" ? "Senator" : "Representative"} ${leg.name.split(' ').pop()},
 
-My name is ${name || '[Your Name]'}${agency ? ` from ${agency}` : ''} in ${city || '[Your City]'}. I urge you to oppose SB 36.
+My name is ${name}${agency ? ` from ${agency}` : ''} in ${city}. I am writing about SB 36.
 
-This bill removes a critical incentive for utilities to maintain safe infrastructure. Under current law, if a utility's negligence causes a wildfire, they face strict liability. This motivates investment in maintenance and equipment upgrades.
+Current liability standards provide an important incentive for utilities to maintain safe infrastructure. I'm concerned that SB 36 may reduce that incentive by limiting accountability when equipment failures cause fires.
 
-SB 36 lets utilities file a "mitigation plan" and eliminates strict liability. The message: file paperwork and you're shielded when your equipment starts fires.
-
-Who pays when accountability disappears? Insurance carriers absorb immediate costs, but South Dakota policyholders bear the burden through higher premiums.
-
-Utilities are monopolies - ratepayers can't switch. The least we can do is hold them accountable for negligence. Please vote NO on SB 36.
+I respectfully ask that any changes to utility liability maintain strong incentives for proper maintenance and safety investments.
 
 Thank you,
-${name || '[Your Name]'}${agency ? '\n' + agency : ''}
-${city ? city + ', SD' : '[Your City, SD]'}${phone ? '\n' + phone : ''}`
+${name}${agency ? '\n' + agency : ''}
+${city}, SD`
             },
             {
-                id: "victims",
-                name: "Victim Rights",
-                icon: "🏠",
-                desc: "Makes it nearly impossible for victims to recover damages",
-                getMessage: (leg, name, city, phone, agency) => `Dear ${leg.chamber === "Senate" ? "Senator" : "Representative"} ${leg.name.split(' ').pop()},
+                id: "balance",
+                name: "Balanced Approach",
+                icon: "⚖️",
+                desc: "Support amendments that protect all parties",
+                text: (leg, name, city, agency) => `Dear ${leg.chamber === "Senate" ? "Senator" : "Representative"} ${leg.name.split(' ').pop()},
 
-I am ${name || '[Your Name]'}${agency ? `, an insurance agent with ${agency}` : ''}, writing to oppose SB 36.
+I am ${name}${agency ? `, an insurance agent with ${agency}` : ''} in ${city}, writing about SB 36.
 
-This bill is devastating for wildfire victims. It creates a near-impossible burden of proof for recovering damages from utilities that cause fires. Even when faulty equipment clearly started the blaze, victims face capped damages and procedural hurdles designed to protect utilities.
+I understand there are legitimate interests on multiple sides of this issue. However, I believe amendments are needed to better balance utility protections with the rights of wildfire victims and insurance carriers to pursue recovery.
 
-Insurance helps, but policies have limits. When families lose everything in a utility-caused fire, they deserve their day in court - not a system rigged against them.
+I support a balanced approach that encourages utility investment in safety while preserving reasonable paths to recovery for those harmed by negligence.
 
-SB 36 is part of a coordinated utility industry push through western states. It benefits shareholders at the expense of families they're supposed to serve.
-
-South Dakota should protect its citizens. Please vote NO on SB 36.
+I appreciate your consideration.
 
 Sincerely,
-${name || '[Your Name]'}${agency ? '\n' + agency : ''}
-${city ? city + ', SD' : '[Your City, SD]'}${phone ? '\n' + phone : ''}`
+${name}${agency ? '\n' + agency : ''}
+${city}, SD`
             },
             {
                 id: "market",
                 name: "Market Stability",
                 icon: "📊",
-                desc: "Threatens stability of SD's property insurance market",
-                getMessage: (leg, name, city, phone, agency) => `Dear ${leg.chamber === "Senate" ? "Senator" : "Representative"} ${leg.name.split(' ').pop()},
+                desc: "Insurance market concerns",
+                text: (leg, name, city, agency) => `Dear ${leg.chamber === "Senate" ? "Senator" : "Representative"} ${leg.name.split(' ').pop()},
 
-My name is ${name || '[Your Name]'}${agency ? ` with ${agency}` : ''} in ${city || '[Your City]'}, and I'm writing as an insurance agent to oppose SB 36.
+My name is ${name}${agency ? ` with ${agency}` : ''} in ${city}. As an insurance professional, I'm writing about SB 36's potential impact on our market.
 
-This bill would destabilize South Dakota's property insurance market. By eliminating strict liability and capping damages for utility-caused wildfires, SB 36 shifts massive potential losses onto insurers with no path to recovery.
+South Dakota currently has a stable, competitive property insurance market. Shifting significant potential losses onto insurers without recovery options could destabilize that market, leading to rate increases or reduced availability in some areas.
 
-The industry response is predictable: rate increases, coverage restrictions, and in severe cases, market withdrawal from high-risk areas. We've watched this unfold elsewhere.
-
-South Dakota's insurance market is currently stable and competitive. SB 36 threatens that by forcing insurers to absorb losses that should be borne by negligent utilities.
-
-Please protect our market and policyholders. Vote NO on SB 36.
+I urge you to consider these market implications as the bill is evaluated.
 
 Respectfully,
-${name || '[Your Name]'}${agency ? '\n' + agency : ''}
-${city ? city + ', SD' : '[Your City, SD]'}${phone ? '\n' + phone : ''}`
+${name}${agency ? '\n' + agency : ''}
+${city}, SD`
             }
         ];
 
         function App() {
             const [step, setStep] = useState(1);
-            const [mode, setMode] = useState(null); // 'committee' or 'district'
+            const [mode, setMode] = useState(null);
             const [district, setDistrict] = useState(null);
             const [selected, setSelected] = useState([]);
-            const [template, setTemplate] = useState(null);
+            const [customMessage, setCustomMessage] = useState('');
+            const [selectedTemplate, setSelectedTemplate] = useState(null);
             const [firstName, setFirstName] = useState('');
             const [lastName, setLastName] = useState('');
             const [city, setCity] = useState('');
@@ -949,6 +972,18 @@ ${city ? city + ', SD' : '[Your City, SD]'}${phone ? '\n' + phone : ''}`
             const inputRef = useRef(null);
             const acRef = useRef(null);
             const fullName = [firstName, lastName].filter(Boolean).join(' ');
+
+            // Navigation helpers
+            const canGoToStep = (s) => {
+                if (s === 1) return true;
+                if (s === 2) return selected.length > 0;
+                if (s === 3) return selected.length > 0;
+                return false;
+            };
+
+            const goToStep = (s) => {
+                if (canGoToStep(s)) setStep(s);
+            };
 
             // Google Places
             useEffect(() => {
@@ -1008,12 +1043,44 @@ ${city ? city + ', SD' : '[Your City, SD]'}${phone ? '\n' + phone : ''}`
                 setSelected(all ? [] : [...committee]);
             };
 
+            const applyTemplate = (t) => {
+                if (selectedTemplate?.id === t.id) {
+                    setSelectedTemplate(null);
+                    setCustomMessage('');
+                } else {
+                    setSelectedTemplate(t);
+                    const sampleLeg = selected[0] || { name: 'Legislator', chamber: 'House' };
+                    setCustomMessage(t.text(sampleLeg, fullName || '[Your Name]', city || '[Your City]', agency));
+                }
+            };
+
+            const getMessage = (leg) => {
+                if (customMessage.trim()) {
+                    // Replace placeholder names with actual legislator
+                    let msg = customMessage;
+                    const title = leg.chamber === "Senate" ? "Senator" : "Representative";
+                    const lastName = leg.name.split(' ').pop();
+                    // Try to replace the salutation if it exists
+                    msg = msg.replace(/Dear (Senator|Representative) \w+,/, `Dear ${title} ${lastName},`);
+                    return msg;
+                }
+                return `Dear ${leg.chamber === "Senate" ? "Senator" : "Representative"} ${leg.name.split(' ').pop()},
+
+I am writing regarding SB 36.
+
+[Your message here]
+
+Sincerely,
+${fullName || '[Your Name]'}${agency ? '\n' + agency : ''}
+${city || '[Your City]'}, SD`;
+            };
+
             const sendEmails = () => {
                 setSending(true);
                 selected.forEach((leg, i) => {
                     setTimeout(() => {
-                        const msg = template.getMessage(leg, fullName, city, phone, agency);
-                        const subj = encodeURIComponent('Opposition to SB 36 - Utility Wildfire Liability');
+                        const msg = getMessage(leg);
+                        const subj = encodeURIComponent('Regarding SB 36 - Utility Wildfire Liability');
                         window.open(`mailto:${leg.email}?subject=${subj}&body=${encodeURIComponent(msg)}`, '_blank');
                     }, i * 700);
                 });
@@ -1025,7 +1092,8 @@ ${city ? city + ', SD' : '[Your City, SD]'}${phone ? '\n' + phone : ''}`
                 setMode(null);
                 setDistrict(null);
                 setSelected([]);
-                setTemplate(null);
+                setCustomMessage('');
+                setSelectedTemplate(null);
                 setFirstName('');
                 setLastName('');
                 setCity('');
@@ -1040,23 +1108,32 @@ ${city ? city + ', SD' : '[Your City, SD]'}${phone ? '\n' + phone : ''}`
             return (
                 <div className="app-container">
                     <header className="header">
-                        <span className="bill-badge">OPPOSE SB 36</span>
-                        <h1>Stop SB 36</h1>
-                        <p>Insurance agents: Take 2 minutes to tell legislators why this bill hurts policyholders.</p>
+                        <span className="bill-badge">SB 36</span>
+                        <h1>SB 36 Action</h1>
+                        <p>Insurance agents: Share your perspective on the utility wildfire liability bill with your legislators.</p>
                     </header>
 
                     <div className="alert-box">
-                        <strong>Why agents should care:</strong> SB 36 guts subrogation. When utilities cause fires, carriers pay claims but can't recover from the responsible party. That cost lands on <strong>your policyholders</strong> via higher premiums.
+                        <strong>Why this matters:</strong> SB 36 affects subrogation rights. When utilities cause fires, carriers pay claims but may have limited ability to recover from the responsible party. This could impact premiums for your policyholders.
                     </div>
 
                     <div className="steps">
-                        <div className={`step ${step >= 1 ? 'active' : ''} ${step > 1 ? 'completed' : ''}`}>
+                        <div
+                            className={`step ${step === 1 ? 'active' : ''} ${step > 1 ? 'completed' : ''}`}
+                            onClick={() => goToStep(1)}
+                        >
                             <span className="step-num">1</span> Select
                         </div>
-                        <div className={`step ${step >= 2 ? 'active' : ''} ${step > 2 ? 'completed' : ''}`}>
+                        <div
+                            className={`step ${step === 2 ? 'active' : ''} ${step > 2 ? 'completed' : ''} ${!canGoToStep(2) ? 'disabled' : ''}`}
+                            onClick={() => goToStep(2)}
+                        >
                             <span className="step-num">2</span> Message
                         </div>
-                        <div className={`step ${step >= 3 ? 'active' : ''}`}>
+                        <div
+                            className={`step ${step === 3 ? 'active' : ''} ${!canGoToStep(3) ? 'disabled' : ''}`}
+                            onClick={() => goToStep(3)}
+                        >
                             <span className="step-num">3</span> Send
                         </div>
                     </div>
@@ -1105,17 +1182,17 @@ ${city ? city + ', SD' : '[Your City, SD]'}${phone ? '\n' + phone : ''}`
                                 <>
                                     <div className="form-group">
                                         <label>Your Office Address</label>
-                                        <input ref={inputRef} type="text" placeholder="Start typing..." disabled={loading} />
+                                        <input ref={inputRef} type="text" placeholder="Start typing your address..." disabled={loading} />
                                         {error && <div className="error-message">{error}</div>}
-                                        {loading && <div className="input-hint"><div className="spinner" style={{ display: 'inline-block', width: 16, height: 16, marginRight: 8, verticalAlign: 'middle' }}></div>Looking up district...</div>}
+                                        {loading && <div className="input-hint"><span className="spinner"></span>Looking up district...</div>}
                                     </div>
                                     <div className="form-group">
-                                        <label>Or select district</label>
+                                        <label>Or select your district</label>
                                         <select defaultValue="" onChange={(e) => {
                                             const n = parseInt(e.target.value);
                                             if (n && legislators[n]) { setDistrict(n); setMatchedAddr(`District ${n}`); }
                                         }}>
-                                            <option value="" disabled>Choose...</option>
+                                            <option value="" disabled>Choose district...</option>
                                             {Array.from({length: 35}, (_, i) => i + 1).map(n => (
                                                 <option key={n} value={n}>District {n} - {legislators[n]?.members.map(m => m.name.split(' ').pop()).join(', ')}</option>
                                             ))}
@@ -1127,7 +1204,7 @@ ${city ? city + ', SD' : '[Your City, SD]'}${phone ? '\n' + phone : ''}`
                             {mode === 'district' && district && districtData && (
                                 <>
                                     <div className="district-badge">📍 District {district}</div>
-                                    {matchedAddr && <div className="input-hint" style={{ marginBottom: '0.75rem' }}>{matchedAddr}</div>}
+                                    {matchedAddr && <div className="input-hint" style={{ marginBottom: '1rem' }}>{matchedAddr}</div>}
                                     <div className="district-grid">
                                         {districtData.members.map((m, i) => (
                                             <div key={i} className={`leg-card ${isSelected(m) ? 'selected' : ''}`} onClick={() => toggle(m)}>
@@ -1154,57 +1231,83 @@ ${city ? city + ', SD' : '[Your City, SD]'}${phone ? '\n' + phone : ''}`
                         </div>
                     )}
 
-                    {/* Step 2 */}
+                    {/* Step 2: Message */}
                     {step === 2 && (
                         <div className="card">
                             <div className="card-header">
-                                <h2>Choose your message focus</h2>
-                                <p>All templates oppose SB 36. Pick the angle that fits you.</p>
-                            </div>
-
-                            <div className="template-grid">
-                                {templates.map(t => (
-                                    <div key={t.id} className={`template-card ${template?.id === t.id ? 'selected' : ''}`} onClick={() => setTemplate(t)}>
-                                        <div className="template-icon">{t.icon}</div>
-                                        <div className="template-name">{t.name}</div>
-                                        <div className="template-desc">{t.desc}</div>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="nav-row">
-                                <button className="btn btn-secondary" onClick={() => setStep(1)}>← Back</button>
-                                <button className="btn btn-primary" onClick={() => setStep(3)} disabled={!template}>Continue →</button>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Step 3 */}
-                    {step === 3 && (
-                        <div className="card">
-                            <div className="card-header">
-                                <h2>Your info & send</h2>
+                                <h2>Write your message</h2>
+                                <p>Write your own message or start from a template below.</p>
                             </div>
 
                             <div className="form-row">
                                 <div className="form-group">
-                                    <label>First Name *</label>
-                                    <input type="text" value={firstName} onChange={e => setFirstName(e.target.value)} placeholder="First" />
+                                    <label>Your Name *</label>
+                                    <input type="text" value={fullName} onChange={e => {
+                                        const parts = e.target.value.split(' ');
+                                        setFirstName(parts[0] || '');
+                                        setLastName(parts.slice(1).join(' ') || '');
+                                    }} placeholder="Your full name" />
                                 </div>
-                                <div className="form-group">
-                                    <label>Last Name *</label>
-                                    <input type="text" value={lastName} onChange={e => setLastName(e.target.value)} placeholder="Last" />
-                                </div>
-                            </div>
-
-                            <div className="form-row">
                                 <div className="form-group">
                                     <label>City *</label>
                                     <input type="text" value={city} onChange={e => setCity(e.target.value)} placeholder="Your city" />
                                 </div>
-                                <div className="form-group">
-                                    <label>Your Agency *</label>
-                                    <input type="text" value={agency} onChange={e => setAgency(e.target.value)} placeholder="Agency name" />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Your Agency</label>
+                                <input type="text" value={agency} onChange={e => setAgency(e.target.value)} placeholder="Agency name (optional)" />
+                            </div>
+
+                            <div className="form-group">
+                                <label>Your Message</label>
+                                <textarea
+                                    value={customMessage}
+                                    onChange={e => { setCustomMessage(e.target.value); setSelectedTemplate(null); }}
+                                    placeholder="Write your message here, or choose a template below to get started..."
+                                />
+                                <div className="input-hint">The greeting will be personalized for each legislator.</div>
+                            </div>
+
+                            <div className="template-section">
+                                <div className="template-header">
+                                    <h3>Or start from a template:</h3>
+                                </div>
+                                <div className="template-grid">
+                                    {templates.map(t => (
+                                        <div key={t.id} className={`template-card ${selectedTemplate?.id === t.id ? 'selected' : ''}`} onClick={() => applyTemplate(t)}>
+                                            <div className="template-icon">{t.icon}</div>
+                                            <div className="template-name">{t.name}</div>
+                                            <div className="template-desc">{t.desc}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="nav-row">
+                                <button className="btn btn-secondary" onClick={() => setStep(1)}>← Back</button>
+                                <button className="btn btn-primary" onClick={() => setStep(3)} disabled={!fullName || !city}>
+                                    Continue →
+                                </button>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Step 3: Send */}
+                    {step === 3 && (
+                        <div className="card">
+                            <div className="card-header">
+                                <h2>Review & Send</h2>
+                            </div>
+
+                            <div className="form-group">
+                                <label>Sending to:</label>
+                                <div className="recipients-row">
+                                    {selected.map(l => (
+                                        <span key={l.email} className="recipient-chip">
+                                            {l.chamber === 'Senate' ? 'Sen.' : 'Rep.'} {l.name.split(' ').pop()}
+                                        </span>
+                                    ))}
                                 </div>
                             </div>
 
@@ -1213,31 +1316,34 @@ ${city ? city + ', SD' : '[Your City, SD]'}${phone ? '\n' + phone : ''}`
                                 <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="(605) 555-1234" />
                             </div>
 
-                            <div style={{ marginBottom: '1rem' }}>
-                                <label style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '0.5rem', display: 'block' }}>Sending to:</label>
-                                <div className="recipients-row">
-                                    {selected.map(l => (
-                                        <span key={l.email} className="recipient-chip">{l.name.split(' ').pop()}</span>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <details>
-                                <summary style={{ cursor: 'pointer', fontSize: '0.85rem', color: 'var(--blue-pro)', fontWeight: 500 }}>Preview message</summary>
-                                <div className="preview-box">
-                                    {template?.getMessage(selected[0] || { name: 'Legislator', chamber: 'House' }, fullName || '[Name]', city || '[City]', phone, agency)}
+                            <details open>
+                                <summary style={{ cursor: 'pointer', fontSize: '0.95rem', color: 'var(--blue-pro)', fontWeight: 600, marginBottom: '0.75rem' }}>
+                                    Message Preview
+                                </summary>
+                                <div style={{
+                                    background: 'var(--cream)',
+                                    borderRadius: '10px',
+                                    padding: '1.25rem',
+                                    fontFamily: "'JetBrains Mono', monospace",
+                                    fontSize: '0.85rem',
+                                    lineHeight: '1.6',
+                                    whiteSpace: 'pre-wrap',
+                                    maxHeight: '250px',
+                                    overflowY: 'auto'
+                                }}>
+                                    {getMessage(selected[0] || { name: 'Legislator', chamber: 'House' })}
                                 </div>
                             </details>
 
-                            <button className="btn btn-send" onClick={sendEmails} disabled={sending || !fullName || !city || !agency} style={{ marginTop: '1rem' }}>
+                            <button className="btn btn-send" onClick={sendEmails} disabled={sending} style={{ marginTop: '1.5rem' }}>
                                 {sending ? 'Opening emails...' : `📧 Send ${selected.length} Email${selected.length > 1 ? 's' : ''}`}
                             </button>
-                            <div className="input-hint" style={{ textAlign: 'center', marginTop: '0.5rem' }}>
+                            <div className="input-hint" style={{ textAlign: 'center', marginTop: '0.75rem' }}>
                                 Opens your email client with message ready to send
                             </div>
 
                             <div className="nav-row">
-                                <button className="btn btn-secondary" onClick={() => setStep(2)}>← Back</button>
+                                <button className="btn btn-secondary" onClick={() => setStep(2)}>← Edit Message</button>
                             </div>
 
                             <div className="reset-link" onClick={reset}>Start over</div>
